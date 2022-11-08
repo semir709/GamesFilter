@@ -10,12 +10,16 @@ import {
 import Main from './pages/main/Main'
 import Game from './pages/game/Game';
 import GameSS from './pages/game_screenshots/GameSS';
+import Navbar from './components/header/Navbar';
 
 function App() {
   return (
     <div className="App">
 
       <Router>
+
+        <Navbar/>
+
         <Routes>
 
           <Route path='/' element={<Main />} />
