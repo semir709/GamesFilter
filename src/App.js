@@ -10,7 +10,7 @@ import {
 import Main from './pages/main/Main'
 import Game from './pages/game/Game';
 import GameSS from './pages/game_screenshots/GameSS';
-import Navbar from './components/header/Navbar';
+import Navbar from './components/navbar/Navbar';
 import Sidenav from './components/sidenav/Sidenav';
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
 
         <Navbar/>
 
-        <div className='d-flex'>
+        <div className='d-flex justify-content-between'>
 
           <Sidenav />
 
