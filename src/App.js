@@ -11,6 +11,7 @@ import Main from './pages/main/Main'
 import Game from './pages/game/Game';
 import GameSS from './pages/game_screenshots/GameSS';
 import Navbar from './components/header/Navbar';
+import Sidenav from './components/sidenav/Sidenav';
 
 function App() {
   return (
@@ -20,14 +21,21 @@ function App() {
 
         <Navbar/>
 
-        <Routes>
+        <div className='d-flex'>
+
+          <Sidenav />
+
+          <Routes>
 
           <Route path='/' element={<Main />} />
           <Route path='/home' element={<Main />} />
           <Route path='/game' element={<Game />} />
           <Route path='/game/screenshots' element={<GameSS />} />
 
-        </Routes>
+          </Routes>
+
+        </div>
+
       </Router>
     
     </div>

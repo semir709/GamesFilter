@@ -1,0 +1,21 @@
+
+
+.items-holder {
+    margin-bottom: 20px;
+}
+
+.items-holder p {
+    height: fit-content;
+}
+
+
+.icon-box {
+    width: 35px;
+    height: 30px;
+    background-color: #424242;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-right: 10px;
+} 

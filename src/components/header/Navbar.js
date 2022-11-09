@@ -1,6 +1,6 @@
 
 import {Link} from 'react-router-dom';
-import search from '../../assets/svg/search.svg';
+import svg from '../../utils/svgLinks/svg';
 import Image from '../image/Image';
 
 import './navbar.css';
@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return(
 
-        <header className="navbar-holder d-flex justify-content-between align-items-center mt-3 px-5">
+        <header className="navbar-holder d-flex justify-content-between align-items-center mt-3 px-3">
 
             <Link to={'/'}>Logo</Link>
 
@@ -18,7 +18,7 @@ const Navbar = () => {
                 <label htmlFor="search-input">
 
                     <div className='search-holder'>
-                        <Image src={search} />
+                        <Image src={svg.search} />
                     </div>
 
                 </label>
