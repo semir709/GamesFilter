@@ -79,7 +79,7 @@ const Game = () => {
                             </div>
 
                             <div className="text-more-holder">
-                                <Link to={'/screensoots'} >See More....</Link>
+                                <Link to={'/game/screenshots'} >See More....</Link>
                             </div>
 
                         </div>

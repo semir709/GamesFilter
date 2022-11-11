@@ -1,0 +1,17 @@
+
+
+.game-ss-holder {
+    width: 90%;
+    padding-top: 70px;
+    font-size: 20px;
+}
+
+.images-holder {
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.image-items{
+    width: 30%;
+    margin-right: 15px;
+}
