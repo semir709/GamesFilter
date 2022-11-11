@@ -4,6 +4,9 @@ import  fire from '../../assets/svg/fire.svg';
 import calendar from '../../assets/svg/calendar.svg';
 import year from '../../assets/svg/year.svg';
 import infinite from '../../assets/svg/infinite.svg';
+import windows from '../../assets/svg/windows.svg';
+import xbox from '../../assets/svg/xbox.svg';
+import playstation from '../../assets/svg/playstation.svg';
 
 
 const svg = {
@@ -12,7 +15,10 @@ const svg = {
     fire,
     calendar,
     year,
-    infinite
+    infinite,
+    windows,
+    xbox,
+    playstation
 
 }
 

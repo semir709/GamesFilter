@@ -1,0 +1,16 @@
+import './infodate.css';
+
+const InfoDate = ({text, date}) => {
+
+    return(
+
+        <div className='info-date'>
+
+            <p>{text}: <span>{date}</span></p>
+
+        </div>
+
+    );
+}
+
+export default InfoDate;

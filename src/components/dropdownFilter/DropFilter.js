@@ -9,6 +9,7 @@ const DropFilter = ({text, item}) => {
             <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {text}
             </button>
+            
             <ul className="dropdown-menu">
 
                 {item.map(({name, link}, index) => {

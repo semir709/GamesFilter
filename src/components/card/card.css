@@ -1,0 +1,38 @@
+
+
+.card-item {
+    width: 280px;
+    /* height: 100px; */
+    background-color: #424242;
+    margin: 10px 15px;
+    border-radius: 20px;
+    padding-bottom: 15px;
+    height: auto;
+}
+
+.card-item p {
+    color: #CDCDCD;
+}
+
+.card-img-holder {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.card-img-holder img {
+    border-radius: 20px 20px 0px 0px;
+}
+
+.info-card-holder {
+    padding: 5px 10px;
+}
+
+.info-card-holder h2 {
+    margin: 0px auto 10px auto;
+    width: fit-content;
+}
+
+.footer-card-info {
+
+}

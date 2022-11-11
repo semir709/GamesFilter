@@ -1,7 +1,7 @@
 import './main.css'
 import Header from '../../components/header/Header';
 import DropFilter from '../../components/dropdownFilter/DropFilter';
-
+import Card from '../../components/card/Card';
 
 /*replace with real data*/
 const items = [
@@ -22,6 +22,20 @@ const items = [
 
 ]
 
+const games = [
+    {name: 'Gta 5'},
+    {name: 'Super Monsters’n Girls'},
+    {name: 'Civilization VI'},
+    {name: 'Cinco Noches Donde Alfredo (FNAF Hecho en 24 Horas)'},
+    {name: 'Gta 5'},
+    {name: 'Gta 5'},
+    {name: 'Super Monsters’n Girls'},
+    {name: 'Civilization VI'},
+    {name: 'Cinco Noches Donde Alfredo (FNAF Hecho en 24 Horas)'},
+    {name: 'Gta 5'}
+                
+]
+
 const Main = () => {
 
     return(
@@ -38,18 +52,43 @@ const Main = () => {
 
             </div>
 
-            {/* <div className='container-fluid'>
+            <div className=' mt-5 card-holder'>
 
-                <div className='row'>
-
-                    <div className='col-3'>Card1</div>
-                    <div className='col-3'>Card2</div>
-                    <div className='col-3'>Card3</div>
-                    <div className='col-3'>Card4</div>
-
+                <div className='col1'>
+                    <Card text={'Gta 5'} />
+                    <Card text={'Super Monsters’n Girls'} />
+                    <Card text={'Civilization VI'} />
+                    <Card text={'Cinco Noches Donde Alfredo (FNAF Hecho en 24 Horas)'} />
                 </div>
 
-            </div> */}
+                <div className='col1'>
+
+                    <Card text={'Super Monsters’n Girls'} />
+                    <Card text={'Super Monsters’n Girls'} />
+                    <Card text={'Civilization VI'} />
+                    <Card text={'Cinco Noches Donde Alfredo (FNAF Hecho en 24 Horas)'} />
+                    
+                </div>
+
+                <div className='col1'>
+
+                    <Card text={'Civilization VI'} />
+                    <Card text={'Super Monsters’n Girls'} />
+                    <Card text={'Civilization VI'} />
+                    <Card text={'Cinco Noches Donde Alfredo (FNAF Hecho en 24 Horas)'} />
+                    
+                </div>
+
+                <div className='col1'>
+
+                    <Card text={'Cinco Noches Donde Alfredo (FNAF Hecho en 24 Horas)'} />
+                    <Card text={'Super Monsters’n Girls'} />
+                    <Card text={'Civilization VI'} />
+                    <Card text={'Cinco Noches Donde Alfredo (FNAF Hecho en 24 Horas)'} />
+                    
+                </div>
+                
+            </div>
 
 
 
