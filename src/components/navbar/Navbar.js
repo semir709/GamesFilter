@@ -13,14 +13,10 @@ const Navbar = () => {
 
             <Link to={'/'}>Logo</Link>
 
-            <div className='input-group d-flex align-items-center'>
+            <div className='input-group d-flex align-items-center mx-4'>
 
-                <label htmlFor="search-input">
-
-                    <div className='search-holder'>
-                        <Image src={svg.search} />
-                    </div>
-
+                <label htmlFor="search-input" className='label-search'>
+                    <img src={svg.search} alt="search" />
                 </label>
 
                 <input id='search-input' type="text" placeholder='Search...' />
