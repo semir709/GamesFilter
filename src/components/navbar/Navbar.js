@@ -10,11 +10,21 @@ const Navbar = () => {
     const click_menu_btn = (e) => {
         const menu_items = document.querySelector('#mobile-side-content');
         menu_items.classList.add('show-menu-items');
+
+        const overlay = document.querySelector('#overlay');
+
+        overlay.classList.add('show-overlay');
+        document.body.classList.add('stop-scrolling');
     } 
 
     const click_close_btn = (e) => {
         const menu_items = document.querySelector('#mobile-side-content');
         menu_items.classList.remove('show-menu-items');
+        const overlay = document.querySelector('#overlay');
+
+        overlay.classList.remove('show-overlay');
+
+        document.body.classList.remove('stop-scrolling');
     } 
 
     return(
@@ -34,7 +44,7 @@ const Navbar = () => {
             </div>
 
             <Link className='about-text' to={'/about'}>About</Link>
-
+            
             <div className='mobile-side-content-holder'>
 
                 <div className='mobile-menu-open' onClick={click_menu_btn}>
@@ -43,11 +53,14 @@ const Navbar = () => {
 
                 <div className='mobile-side-content' id='mobile-side-content'>
 
+
                     <div className='mobile-menu-close' onClick={click_close_btn}>
                         <img src={svg.close} alt="" />
                     </div>
 
                     <Sidenav />
+
+                    <Link className='about-text' to={'/about'}>About</Link>
 
                 </div>
                 

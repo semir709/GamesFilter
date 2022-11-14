@@ -22,3 +22,19 @@ a:hover {
 p {
   margin: 0;  
 }
+
+#overlay {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    z-index: 10;
+    position: fixed;
+    display: none;
+}
+
+.show-overlay {
+    display: block !important;
+}

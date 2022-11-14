@@ -16,6 +16,7 @@ import Sidenav from './components/sidenav/Sidenav';
 function App() {
   return (
     <div className="App">
+      <div id='overlay'></div>
 
       <Router>
 
