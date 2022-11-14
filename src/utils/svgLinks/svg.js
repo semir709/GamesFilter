@@ -7,6 +7,8 @@ import infinite from '../../assets/svg/infinite.svg';
 import windows from '../../assets/svg/windows.svg';
 import xbox from '../../assets/svg/xbox.svg';
 import playstation from '../../assets/svg/playstation.svg';
+import menu from '../../assets/svg/menu.svg';
+import close from '../../assets/svg/close.svg';
 
 
 const svg = {
@@ -18,7 +20,9 @@ const svg = {
     infinite,
     windows,
     xbox,
-    playstation
+    playstation,
+    menu,
+    close
 
 }
 
