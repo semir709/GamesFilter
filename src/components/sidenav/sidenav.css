@@ -1,7 +1,6 @@
 
 
 .side-nav-holder {
-    /* background-color: red; */
     width: 180px;
     padding-top: 70px;
 }
@@ -21,3 +20,9 @@
     font-weight: bold;
     margin-bottom: 20px;
 }
+
+/* .side-nav-holder ul li:hover {
+
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg);
+
+} */

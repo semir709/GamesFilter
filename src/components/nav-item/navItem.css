@@ -8,6 +8,10 @@
     height: fit-content;
 }
 
+.items-holder:hover p {
+    color: #cacaca;
+}
+
 
 .icon-box {
     width: 35px;
@@ -18,4 +22,15 @@
     align-items: center;
     border-radius: 5px;
     margin-right: 10px;
+    transition: 0.2s;
 } 
+
+.items-holder:hover .icon-box{
+    background-color: #fff;
+    color: #000;
+}
+
+.items-holder:hover .icon-box img{
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg);
+  
+}

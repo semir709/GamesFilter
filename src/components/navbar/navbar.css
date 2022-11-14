@@ -19,8 +19,8 @@
 .input-group input {
     background-color: transparent;
     border: none;
-    /* width: 95%; */
     color: #fff;
+    height: 20px;
 }
 
 .input-group input:focus-visible {
@@ -31,6 +31,8 @@
 
 .label-search {
    margin-right: 10px;
+   width: 20px;
+   height: 20px;
 }
 
 .label-search:hover {
@@ -49,9 +51,6 @@
     transform: translate(-50%, -50%);
 }
 
-#search-input {
-    height: 20px;
-}
 @media (max-width: 768px) {
 
     .input-group {
