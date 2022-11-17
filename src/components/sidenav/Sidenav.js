@@ -1,6 +1,6 @@
 import './sidenav.css';
 import Navitem from '../nav-item/NavItem';
-import svg from '../../utils/svgLinks/svg';
+import svg from '../../utils/svg';
 
 
 const Sidenav = () => {

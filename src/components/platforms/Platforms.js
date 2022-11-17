@@ -1,4 +1,4 @@
-import svg from "../../utils/svgLinks/svg";
+import svg from "../../utils/svg";
 
 const Platforms = () => {
 

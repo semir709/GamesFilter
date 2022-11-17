@@ -1,6 +1,6 @@
 
 import {Link} from 'react-router-dom';
-import svg from '../../utils/svgLinks/svg';
+import svg from '../../utils/svg';
 import Sidenav from '../sidenav/Sidenav';
 
 import './navbar.css';
