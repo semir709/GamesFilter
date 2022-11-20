@@ -12,8 +12,12 @@ import Game from './pages/game/Game';
 import GameSS from './pages/game_screenshots/GameSS';
 import Navbar from './components/navbar/Navbar';
 import Sidenav from './components/sidenav/Sidenav';
+import { useState } from 'react';
 
 function App() {
+
+  let [category, setCategory] = useState('games');
+  let [query, setQuery] = useState("");
   return (
     <div className="App">
       <div id='overlay'></div>
@@ -24,12 +28,12 @@ function App() {
 
         <div className='d-flex justify-content-between'>
 
-          <Sidenav />
+          <Sidenav setCategory={setCategory} setQuery={setQuery}/>
 
           <Routes>
 
-          <Route path='/' element={<Main />} />
-          <Route path='/home' element={<Main />} />
+          <Route path='/' element={<Main category={category} query={query} />} />
+          <Route path='/home' element={<Main category={category} query={query} />} />
           <Route path='/game' element={<Game />} />
           <Route path='/game/screenshots' element={<GameSS />} />
 

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import './navItem.css';
 
-const Navitem = ({hasImg, src, text, link}) => {
+const Navitem = ({hasImg, src, text, takeVal, val}) => {
 
     return(
 
-        <Link className='d-flex align-items-center items-holder' to={link}>
+        <div className='d-flex align-items-center items-holder' data-val={val} onClick={takeVal}>
                         
              {hasImg === false ? '' : 
 
@@ -16,7 +16,7 @@ const Navitem = ({hasImg, src, text, link}) => {
 
             <p>{text}</p>  
 
-        </Link>
+        </div>
 
     );
 }

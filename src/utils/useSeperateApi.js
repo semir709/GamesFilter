@@ -23,7 +23,7 @@ const useSeperateApi = (data) => {
       }
       c++;
     });
-  }, []);
+  }, [data]);
 
   return { col1, col2, col3, col4 };
 };

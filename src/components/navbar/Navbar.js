@@ -39,7 +39,7 @@ const Navbar = () => {
                     <img src={svg.search} alt="search" />
                 </label>
 
-                <input id='search-input' type="text" placeholder='Search...' />
+                <input id='search-input'  type="text" placeholder='Search...' />
 
             </div>
 

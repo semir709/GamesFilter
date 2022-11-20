@@ -2,9 +2,11 @@ import "./main.css";
 import Header from "../../components/header/Header";
 import DropFilter from "../../components/dropdownFilter/DropFilter";
 import Card from "../../components/card/Card";
-
-import { useEffect, useState } from "react";
 import useSeperateApi from "../../utils/useSeperateApi";
+import useApiCall from "../../utils/useApiCall";
+
+import { useState } from "react";
+import { Route } from "react-router-dom";
 
 /*replace with real data*/
 const items = [
@@ -35,7 +37,15 @@ const games = [
   { name: "Monster Prom 3: Monster Roadtrip" },
 ];
 
-const Main = () => {
+const Main = ({ category, query }) => {
+  // const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
+  // const [route, setRoute] = useState(category);
+
+  // console.log(category, "category");
+  // console.log(query, "query");
+
+  useApiCall(query, page, category);
   const { col1, col2, col3, col4 } = useSeperateApi(games);
   return (
     <div className="main-holder mx-5">
