@@ -1,14 +1,33 @@
 import svg from "../../utils/svg";
 
-const Platforms = () => {
+const Platforms = ({ platforms }) => {
 
-    return(
+    return (
 
         <div className='d-flex'>
 
-            <img className='mx-1' src={svg.windows} alt="windows" />
-            <img className='mx-1' src={svg.playstation} alt="playstation" />
-            <img className='mx-1' src={svg.xbox} alt="xbox" />
+            {platforms.map(({ platform }, index) => {
+
+
+                {
+
+                    switch (platform.slug) {
+                        case 'pc':
+                            return <img key={index} className='mx-1' src={svg.windows} alt={platform.slug} />
+                        case 'playstation4':
+                            return <img key={index} className='mx-1' src={svg.playstation} alt={platform.slug} />
+                        case 'xbox-series-x':
+                            return <img key={index} className='mx-1' src={svg.xbox} alt={platform.slug} />
+                        default:
+                            return ''
+
+
+                    }
+
+                }
+
+            })}
+
 
         </div>
 

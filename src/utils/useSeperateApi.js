@@ -9,17 +9,18 @@ const useSeperateApi = (data) => {
   useEffect(() => {
     let c = 1;
 
-    data.forEach(({ name }) => {
+    data.forEach(({ name, released, background_image, rating, ratings, platforms, genres }) => {
+      // console.log(name, released, background_image, rating, ratings, platforms, genres);
       if (c > 4) c = 1;
 
       if (c === 1) {
-        setCol1((arr) => [...arr, name]);
+        setCol1((arr) => [...arr, { name, released, background_image, rating, ratings, platforms, genres }]);
       } else if (c === 2) {
-        setCol2((arr) => [...arr, name]);
+        setCol2((arr) => [...arr, { name, released, background_image, rating, ratings, platforms, genres }]);
       } else if (c === 3) {
-        setCol3((arr) => [...arr, name]);
+        setCol3((arr) => [...arr, { name, released, background_image, rating, ratings, platforms, genres }]);
       } else if (c === 4) {
-        setCol4((arr) => [...arr, name]);
+        setCol4((arr) => [...arr, { name, released, background_image, rating, ratings, platforms, genres }]);
       }
       c++;
     });
