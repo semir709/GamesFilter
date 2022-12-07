@@ -7,7 +7,28 @@ const Sidenav = ({ setQuery, setCategory }) => {
     const value = e.target.closest(".items-holder").getAttribute("data-val");
 
     if (value === "week" || value === "month" || value === "year") {
+      setCategory("games");
       setQuery(value);
+    }
+    else if (
+      value === "action" ||
+      value === "strategy" ||
+      value === "role-playing-games-rpg" ||
+      value === "shooter" ||
+      value === "adventure" ||
+      value === "puzzle" ||
+      value === "racing" ||
+      value === "sports"
+    ) {
+      setCategory("genres");
+      setQuery(null);
+    } else if (value === 'all') {
+      setCategory('games');
+      setQuery('all');
+
+    } else {
+      setCategory("games");
+      setQuery('all');
     }
   };
 
@@ -64,28 +85,76 @@ const Sidenav = ({ setQuery, setCategory }) => {
           <p>Genres</p>
         </li>
         <li>
-          <Navitem text={"Action"} link={"/"} hasImg={false} />
+          <Navitem
+            text={"Action"}
+            val={"action"}
+            takeVal={takeVal}
+            link={"/"}
+            hasImg={false}
+          />
         </li>
         <li>
-          <Navitem text={"Strategy"} link={"/"} hasImg={false} />
+          <Navitem
+            text={"Strategy"}
+            val={"strategy"}
+            takeVal={takeVal}
+            link={"/"}
+            hasImg={false}
+          />
         </li>
         <li>
-          <Navitem text={"RPG"} link={"/"} hasImg={false} />
+          <Navitem
+            text={"RPG"}
+            val={"role-playing-games-rpg"}
+            takeVal={takeVal}
+            link={"/"}
+            hasImg={false}
+          />
         </li>
         <li>
-          <Navitem text={"Shooter"} link={"/"} hasImg={false} />
+          <Navitem
+            text={"Shooter"}
+            val={"shooter"}
+            takeVal={takeVal}
+            link={"/"}
+            hasImg={false}
+          />
         </li>
         <li>
-          <Navitem text={"Adventure"} link={"/"} hasImg={false} />
+          <Navitem
+            text={"Adventure"}
+            val={"adventure"}
+            takeVal={takeVal}
+            link={"/"}
+            hasImg={false}
+          />
         </li>
         <li>
-          <Navitem text={"Puzzle"} link={"/"} hasImg={false} />
+          <Navitem
+            text={"Puzzle"}
+            val={"puzzle"}
+            takeVal={takeVal}
+            link={"/"}
+            hasImg={false}
+          />
         </li>
         <li>
-          <Navitem text={"Racing"} link={"/"} hasImg={false} />
+          <Navitem
+            text={"Racing"}
+            val={"racing"}
+            takeVal={takeVal}
+            link={"/"}
+            hasImg={false}
+          />
         </li>
         <li>
-          <Navitem text={"Sport"} link={"/"} hasImg={false} />
+          <Navitem
+            text={"Sport"}
+            val={"sports"}
+            takeVal={takeVal}
+            link={"/"}
+            hasImg={false}
+          />
         </li>
       </ul>
     </div>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import './navItem.css';
 
 const Navitem = ({hasImg, src, text, takeVal, val}) => {

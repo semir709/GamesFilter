@@ -5,8 +5,7 @@ import Card from "../../components/card/Card";
 import useSeperateApi from "../../utils/useSeperateApi";
 import useApiCall from "../../utils/useApiCall";
 
-import { useState } from "react";
-import { Route } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 /*replace with real data*/
 const items = [
@@ -38,14 +37,16 @@ const games = [
 ];
 
 const Main = ({ category, query }) => {
-  // const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
-  // const [route, setRoute] = useState(category);
 
-  // console.log(category, "category");
-  // console.log(query, "query");
+  let { loading, error, data, ctg } = useApiCall(query, page, category);
 
-  useApiCall(query, page, category);
+  // console.log(query, "<- query --- ", "category ->", category);
+  console.log(data);
+  console.log('load', loading);
+  console.log('errror', error);
+  console.log('ctg', ctg);
+
   const { col1, col2, col3, col4 } = useSeperateApi(games);
   return (
     <div className="main-holder mx-5">
@@ -54,6 +55,16 @@ const Main = ({ category, query }) => {
       <div className="d-flex">
         <DropFilter text={"Order by:"} item={items} />
       </div>
+
+      {loading && 'loading'}
+      {error && 'error'}
+
+
+      {data && (ctg === 'games') && data.map(({ name, released, background_image, rating, ratings, platforms, genres }) => {
+
+        return name;
+
+      })}
 
       <div className="mt-5 card-holder">
         <div className="col1">

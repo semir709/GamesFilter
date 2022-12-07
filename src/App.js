@@ -17,32 +17,36 @@ import { useState } from 'react';
 function App() {
 
   let [category, setCategory] = useState('games');
-  let [query, setQuery] = useState("");
+  let [query, setQuery] = useState('all');
+
+  // console.log(query, 'query');
+  // console.log(category, 'category');
+
   return (
     <div className="App">
       <div id='overlay'></div>
 
       <Router>
 
-        <Navbar/>
+        <Navbar />
 
         <div className='d-flex justify-content-between'>
 
-          <Sidenav setCategory={setCategory} setQuery={setQuery}/>
+          <Sidenav setCategory={setCategory} setQuery={setQuery} />
 
           <Routes>
 
-          <Route path='/' element={<Main category={category} query={query} />} />
-          <Route path='/home' element={<Main category={category} query={query} />} />
-          <Route path='/game' element={<Game />} />
-          <Route path='/game/screenshots' element={<GameSS />} />
+            <Route path='/' element={<Main category={category} query={query} />} />
+            <Route path='/home' element={<Main category={category} query={query} />} />
+            <Route path='/game' element={<Game />} />
+            <Route path='/game/screenshots' element={<GameSS />} />
 
           </Routes>
 
         </div>
 
       </Router>
-    
+
     </div>
   );
 }
