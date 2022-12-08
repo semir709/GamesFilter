@@ -1,8 +1,66 @@
+.dropfilter-holder {
+    position: relative;
+    margin-top: 20px;
+}
 
-
-.filter-holder button {
+.btn-holder-filter {
 
     background-color: #424242;
+    width: 180px;
+    height: 30px;
+    padding: 0px 5px;
+    border-radius: 10px;
+}
+
+.btn-holder-filter:hover {
+    cursor: pointer;
+}
+
+.btn-holder-filter p {
+    width: 80%;
+    background-color: transparent;
     border: none;
-    
+    color: #fff;
+}
+
+.svg-holder-filter {
+    position: relative;
+    width: 35px;
+}
+
+.svg-holder-filter img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.options-hoder {
+    position: absolute;
+    background-color: #424242;
+    width: 150px;
+    border-radius: 10px;
+    z-index: 100;
+    top: 115%;
+    left: 0%;
+    display: none;
+}
+
+.options-hoder ul {
+    list-style: none;
+    padding: 10px 0px;
+}
+
+.options-hoder ul li {
+    margin-top: 10px;
+    padding: 0px 15px;
+}
+
+.options-hoder ul li:hover {
+    background-color: #6d6d6d;
+    cursor: pointer;
+}
+
+.options-show {
+    display: block !important;
 }

@@ -7,24 +7,9 @@ import useApiCall from "../../utils/useApiCall";
 
 import { useEffect, useState } from "react";
 
-/*replace with real data*/
-const items = [
-  {
-    link: "/home",
-    name: "All games",
-  },
-  {
-    link: "/home",
-    name: "Some games",
-  },
-  {
-    link: "/home",
-    name: "My games",
-  },
-];
-
 const Main = ({ query }) => {
   const [page, setPage] = useState(1);
+  const [filter, setFilter] = useState('def');
 
   let { loading, error, data } = useApiCall(query, page);
 
@@ -37,10 +22,7 @@ const Main = ({ query }) => {
 
   }, [data]);
 
-  // console.log(data);
-
   const { col1, col2, col3, col4 } = useSeperateApi(data);
-  // console.log(col1);
 
 
   return (
@@ -48,7 +30,7 @@ const Main = ({ query }) => {
       <Header text={"All games"} />
 
       <div className="d-flex">
-        <DropFilter text={"Order by:"} item={items} />
+        <DropFilter text={"Order by:"} />
       </div>
 
       {loading && 'loading'}
