@@ -23,23 +23,10 @@ const items = [
   },
 ];
 
-// const games = [
-//   { name: "Mount & Blade II: Bannerlord" },
-//   { name: "Marvel Snap" },
-//   { name: "Call of Duty: Modern Warfare II" },
-//   { name: "Victoria 3" },
-//   { name: "Nova Lands: Emilia's Mission" },
-//   { name: "New Tales from the Borderlands" },
-//   { name: "The Unliving" },
-//   { name: "Tactics Ogre: Reborn" },
-//   { name: "Escape First Alchemist: Prologue" },
-//   { name: "Monster Prom 3: Monster Roadtrip" },
-// ];
-
-const Main = ({ category, query }) => {
+const Main = ({ query }) => {
   const [page, setPage] = useState(1);
 
-  let { loading, error, data, ctg } = useApiCall(query, page, category);
+  let { loading, error, data } = useApiCall(query, page);
 
   useEffect(() => {
     const divs = document.querySelectorAll('[class*="col"]');
@@ -51,15 +38,11 @@ const Main = ({ category, query }) => {
   }, [data]);
 
   // console.log(data);
-  // console.log('load', loading);
-  // console.log('errror', error);
-  // console.log('ctg', ctg);
-
-  console.log(data);
 
   const { col1, col2, col3, col4 } = useSeperateApi(data);
-
   // console.log(col1);
+
+
   return (
     <div className="main-holder mx-5">
       <Header text={"All games"} />
@@ -75,22 +58,22 @@ const Main = ({ category, query }) => {
 
         <div className="mt-5 card-holder">
           <div className="col1">
-            {data && (ctg === 'games') && col1.map(({ name, released, background_image, rating, ratings, platforms, genres }, index) => {
+            {col1 && col1.map(({ name, released, background_image, rating, ratings, platforms, genres }, index) => {
               return <Card text={name} src={background_image} released={released} genres={genres} rating={rating} platforms={platforms} key={index} />;
             })}
           </div>
           <div className="col2">
-            {data && (ctg === 'games') && col2.map(({ name, released, background_image, rating, ratings, platforms, genres }, index) => {
+            {col2 && col2.map(({ name, released, background_image, rating, ratings, platforms, genres }, index) => {
               return <Card text={name} src={background_image} released={released} genres={genres} rating={rating} platforms={platforms} key={index} />;
             })}
           </div>
           <div className="col3">
-            {data && (ctg === 'games') && col3.map(({ name, released, background_image, rating, ratings, platforms, genres }, index) => {
+            {col3 && col3.map(({ name, released, background_image, rating, ratings, platforms, genres }, index) => {
               return <Card text={name} src={background_image} released={released} genres={genres} rating={rating} platforms={platforms} key={index} />;
             })}
           </div>
           <div className="col4">
-            {data && (ctg === 'games') && col4.map(({ name, released, background_image, rating, ratings, platforms, genres }, index) => {
+            {col4 && col4.map(({ name, released, background_image, rating, ratings, platforms, genres }, index) => {
               return <Card text={name} src={background_image} released={released} genres={genres} rating={rating} platforms={platforms} key={index} />;
             })}
           </div>

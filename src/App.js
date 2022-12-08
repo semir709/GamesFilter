@@ -16,7 +16,7 @@ import { useState } from 'react';
 
 function App() {
 
-  let [category, setCategory] = useState('games');
+  // let [category, setCategory] = useState('games');
   let [query, setQuery] = useState('all');
 
   // console.log(query, 'query');
@@ -32,12 +32,12 @@ function App() {
 
         <div className='d-flex justify-content-between'>
 
-          <Sidenav setCategory={setCategory} setQuery={setQuery} />
+          <Sidenav setQuery={setQuery} />
 
           <Routes>
 
-            <Route path='/' element={<Main category={category} query={query} />} />
-            <Route path='/home' element={<Main category={category} query={query} />} />
+            <Route path='/' element={<Main query={query} />} />
+            <Route path='/home' element={<Main query={query} />} />
             <Route path='/game' element={<Game />} />
             <Route path='/game/screenshots' element={<GameSS />} />
 

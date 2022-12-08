@@ -2,34 +2,10 @@ import "./sidenav.css";
 import Navitem from "../nav-item/NavItem";
 import svg from "../../utils/svg";
 
-const Sidenav = ({ setQuery, setCategory }) => {
+const Sidenav = ({ setQuery }) => {
   const takeVal = (e) => {
     const value = e.target.closest(".items-holder").getAttribute("data-val");
-
-    if (value === "week" || value === "month" || value === "year") {
-      setCategory("games");
-      setQuery(value);
-    }
-    else if (
-      value === "action" ||
-      value === "strategy" ||
-      value === "role-playing-games-rpg" ||
-      value === "shooter" ||
-      value === "adventure" ||
-      value === "puzzle" ||
-      value === "racing" ||
-      value === "sports"
-    ) {
-      setCategory("genres");
-      setQuery(null);
-    } else if (value === 'all') {
-      setCategory('games');
-      setQuery('all');
-
-    } else {
-      setCategory("games");
-      setQuery('all');
-    }
+    setQuery(value);
   };
 
   return (

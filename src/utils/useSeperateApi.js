@@ -10,7 +10,6 @@ const useSeperateApi = (data) => {
     let c = 1;
 
     data.forEach(({ name, released, background_image, rating, ratings, platforms, genres }) => {
-      // console.log(name, released, background_image, rating, ratings, platforms, genres);
       if (c > 4) c = 1;
 
       if (c === 1) {
