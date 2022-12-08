@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import paramDate from "./params/paramDate";
 import paramGenres from "./params/paramGenres";
+import paramFilter from "./params/paramFilter";
 
 const useApiCall = (query, page) => {
 
@@ -16,10 +17,15 @@ const useApiCall = (query, page) => {
 
     let date = paramDate(query);
     let genres = paramGenres(query);
+    let filter = paramFilter(query);
 
     if (date) params.dates = date;
     if (genres) params.genres = genres;
+    if (filter) {
+        params = Object.assign(filter, params);
+    }
 
+    console.log(params);
 
 
     useEffect(() => {

@@ -9,7 +9,9 @@ import { useEffect, useState } from "react";
 
 const Main = ({ query }) => {
   const [page, setPage] = useState(1);
-  const [filter, setFilter] = useState('def');
+  const [filter, setFilter] = useState(false);
+
+  if (filter) query = filter;
 
   let { loading, error, data } = useApiCall(query, page);
 
@@ -24,13 +26,15 @@ const Main = ({ query }) => {
 
   const { col1, col2, col3, col4 } = useSeperateApi(data);
 
+  // console.log(data);
+
 
   return (
     <div className="main-holder mx-5">
       <Header text={"All games"} />
 
       <div className="d-flex">
-        <DropFilter text={"Order by:"} />
+        <DropFilter text={"Order by:"} takeVal={setFilter} />
       </div>
 
       {loading && 'loading'}

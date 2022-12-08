@@ -1,12 +1,12 @@
 import './infodate.css';
 
-const InfoDate = ({text, date}) => {
+const InfoDate = ({ text, date }) => {
 
-    return(
+    return (
 
         <div className='info-date'>
 
-            <p>{text}: <span>{date}</span></p>
+            <p>{text}: <span>{date === null ? 'No relase date' : date}</span></p>
 
         </div>
 

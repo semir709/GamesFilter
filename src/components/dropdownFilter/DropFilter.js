@@ -2,7 +2,7 @@
 import './dropfilter.css';
 import arrow from '../../assets/svg/arrow_bottom.svg';
 
-const DropFilter = ({ text }) => {
+const DropFilter = ({ text, takeVal }) => {
 
     const items = [
         {
@@ -33,9 +33,9 @@ const DropFilter = ({ text }) => {
 
         optionsHolder.classList.remove('options-show');
 
-        console.log(value);
-
         display.innerHTML = 'Order by: ' + value;
+
+        takeVal(value);
 
     }
 
@@ -55,6 +55,7 @@ const DropFilter = ({ text }) => {
                     <li onClick={optionSelect} data-value={'best'}>The Best</li>
                     <li onClick={optionSelect} data-value={'oldest'}>From oldest</li>
                     <li onClick={optionSelect} data-value={'latest'}>From newest</li>
+                    <li onClick={optionSelect} data-value={'name'}>By name</li>
                 </ul>
             </div>
 
