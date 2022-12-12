@@ -12,7 +12,12 @@ const paramGenres = (query) => {
         query === "racing" ||
         query === "sports") {
 
-        param = query;
+        // param = query;
+
+
+        param = {
+            genres: query
+        }
 
     }
     else {

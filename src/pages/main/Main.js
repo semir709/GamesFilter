@@ -2,8 +2,8 @@ import "./main.css";
 import Header from "../../components/header/Header";
 import DropFilter from "../../components/dropdownFilter/DropFilter";
 import Card from "../../components/card/Card";
-import useSeperateApi from "../../utils/useSeperateApi";
-import useApiCall from "../../utils/useApiCall";
+import useSeperateApi from "../../utils/api/custApiFunction/useSeperateApi";
+import useApiCall from "../../utils/api/useApiCall";
 
 import { useEffect, useState } from "react";
 

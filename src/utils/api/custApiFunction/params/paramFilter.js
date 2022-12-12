@@ -22,7 +22,7 @@ const paramFilter = (query) => {
         param = { ordering: '-name' };
     }
     else {
-        param = false;
+        param = '';
     }
 
     return param;

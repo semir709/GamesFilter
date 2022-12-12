@@ -1,34 +1,42 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import paramDate from "./params/paramDate";
-import paramGenres from "./params/paramGenres";
-import paramFilter from "./params/paramFilter";
+import paramDate from "./custApiFunction/params/paramDate";
+import paramGenres from "./custApiFunction/params/paramGenres";
+import paramFilter from "./custApiFunction/params/paramFilter";
+import clearParamObject from "./custApiFunction/clearParamObject";
 
 const useApiCall = (query, page) => {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [data, setData] = useState([]);
-
-    let params = {
+    const [params, setParams] = useState({
         key: process.env.REACT_APP_KEY,
         page: page,
-    }
-
-    let date = paramDate(query);
-    let genres = paramGenres(query);
-    let filter = paramFilter(query);
-
-    if (date) params.dates = date;
-    if (genres) params.genres = genres;
-    if (filter) {
-        params = Object.assign(filter, params);
-    }
-
-    console.log(params);
+    });
 
 
     useEffect(() => {
+
+        let date = paramDate(query);
+        let genres = paramGenres(query);
+        let filter = paramFilter(query);
+
+        if (date) {
+
+            clearParamObject(params);
+            Object.assign(params, date);
+        }
+        if (genres) {
+            clearParamObject(params);
+            Object.assign(params, genres);
+        }
+        if (filter) {
+            Object.assign(params, filter);
+        }
+
+
+        console.log(params);
 
         axios.get(`https://api.rawg.io/api/games`, {
             method: 'GET',
