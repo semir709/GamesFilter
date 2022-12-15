@@ -1,10 +1,12 @@
 import Header from "../../components/header/Header";
 import './gamess.css';
 import Image from "../../components/image/Image";
+import { useEffect } from "react";
 
 const GameSS = () => {
 
-    return(
+
+    return (
 
         <div className="game-ss-holder">
             <Header text={'Civilization VI'} />

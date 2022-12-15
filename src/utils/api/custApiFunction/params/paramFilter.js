@@ -5,7 +5,17 @@ const paramFilter = (query) => {
     let param;
 
     if (query === "oldest") {
-        param = 'released';
+
+        const currentYear = new Date().getFullYear();
+        const firstDay = '2004-01-01';
+        const lastDay = formatDate(new Date(currentYear, 11, 31));
+
+        console.log(firstDay + ',' + lastDay);
+
+        param = {
+            ordering: 'released',
+            dates: firstDay + ',' + lastDay
+        };
     } else if (query === "latest") {
         const currentYear = new Date().getFullYear();
         const firstDay = formatDate(new Date(currentYear, 0, 1));
@@ -18,11 +28,9 @@ const paramFilter = (query) => {
 
     } else if (query === "best") {
         param = { ordering: '-rating' };
-    } else if (query === 'name') {
-        param = { ordering: '-name' };
     }
     else {
-        param = '';
+        param = false;
     }
 
     return param;

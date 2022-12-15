@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import paramDate from "./custApiFunction/params/paramDate";
 import paramGenres from "./custApiFunction/params/paramGenres";
 import paramFilter from "./custApiFunction/params/paramFilter";
-import clearParamObject from "./custApiFunction/clearParamObject";
 
 const useApiCall = (query, page) => {
 
@@ -15,32 +14,53 @@ const useApiCall = (query, page) => {
         page: page,
     });
 
+    // console.log(params);
+    // console.log(query);
+
+
+    let date = paramDate(query);
+    let genres = paramGenres(query);
+    let filterFinall = paramFilter(query);
+
+    // if (date) {
+
+    //     // Object.keys(params).forEach(key => {
+
+    //     //     if (key !== 'key' && key !== 'page') {
+    //     //         delete params[key];
+    //     //     }
+
+    //     // });
+
+    //     // Object.assign(params, date);
+
+    //     // console.log('date if');
+    //     // clearParamObject(params);
+    //     // Object.assign(params, date);
+    // }
+    if (genres) {
+
+        Object.keys(params).forEach(key => {
+
+            if (key !== 'key' && key !== 'page') {
+                delete params[key];
+            }
+
+        });
+
+        Object.assign(params, genres);
+
+    }
+    if (filterFinall) {
+
+        Object.assign(params, filterFinall);
+    }
 
     useEffect(() => {
 
-        let date = paramDate(query);
-        let genres = paramGenres(query);
-        let filter = paramFilter(query);
-
-        if (date) {
-
-            clearParamObject(params);
-            Object.assign(params, date);
-        }
-        if (genres) {
-            clearParamObject(params);
-            Object.assign(params, genres);
-        }
-        if (filter) {
-            Object.assign(params, filter);
-        }
-
-
-        console.log(params);
-
         axios.get(`https://api.rawg.io/api/games`, {
             method: 'GET',
-            params: params
+            params: params,
         }).then(res => {
 
             setData(prev => {
@@ -60,6 +80,7 @@ const useApiCall = (query, page) => {
 
 
     }, [query, page]);
+
 
     return { loading, error, data };
 

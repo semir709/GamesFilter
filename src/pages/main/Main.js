@@ -6,14 +6,24 @@ import useSeperateApi from "../../utils/api/custApiFunction/useSeperateApi";
 import useApiCall from "../../utils/api/useApiCall";
 
 import { useEffect, useState } from "react";
+import { useRef } from "react";
 
 const Main = ({ query }) => {
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState(false);
+  const [finalQuery, setFinalQuery] = useState(query);
 
-  if (filter) query = filter;
 
-  let { loading, error, data } = useApiCall(query, page);
+  useEffect(() => {
+    setFinalQuery(query);
+    setFilter('');
+  }, [query]);
+
+  useEffect(() => {
+    setFinalQuery(filter);
+  }, [filter]);
+
+  let { loading, error, data } = useApiCall(finalQuery, page);
 
   useEffect(() => {
     const divs = document.querySelectorAll('[class*="col"]');
@@ -26,15 +36,13 @@ const Main = ({ query }) => {
 
   const { col1, col2, col3, col4 } = useSeperateApi(data);
 
-  // console.log(data);
-
 
   return (
     <div className="main-holder mx-5">
       <Header text={"All games"} />
 
       <div className="d-flex">
-        <DropFilter text={"Order by:"} takeVal={setFilter} />
+        <DropFilter text={filter} setFilter={setFilter} />
       </div>
 
       {loading && 'loading'}

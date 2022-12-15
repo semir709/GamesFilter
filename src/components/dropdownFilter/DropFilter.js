@@ -2,7 +2,7 @@
 import './dropfilter.css';
 import arrow from '../../assets/svg/arrow_bottom.svg';
 
-const DropFilter = ({ text, takeVal }) => {
+const DropFilter = ({ text, setFilter }) => {
 
     const items = [
         {
@@ -33,9 +33,8 @@ const DropFilter = ({ text, takeVal }) => {
 
         optionsHolder.classList.remove('options-show');
 
-        display.innerHTML = 'Order by: ' + value;
+        setFilter(value);
 
-        takeVal(value);
 
     }
 
@@ -44,7 +43,7 @@ const DropFilter = ({ text, takeVal }) => {
         <div className="d-flex dropfilter-holder">
 
             <div className="btn-holder-filter d-flex align-items-center" onClick={openOptions}>
-                <p id='display-item'>Order by: </p>
+                <p id='display-item'>Order by: {text}</p>
                 <div className="svg-holder-filter">
                     <img src={arrow} alt="" />
                 </div>
@@ -55,7 +54,7 @@ const DropFilter = ({ text, takeVal }) => {
                     <li onClick={optionSelect} data-value={'best'}>The Best</li>
                     <li onClick={optionSelect} data-value={'oldest'}>From oldest</li>
                     <li onClick={optionSelect} data-value={'latest'}>From newest</li>
-                    <li onClick={optionSelect} data-value={'name'}>By name</li>
+                    {/* <li onClick={optionSelect} data-value={'name'}>By name</li> */}
                 </ul>
             </div>
 

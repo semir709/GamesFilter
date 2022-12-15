@@ -14,6 +14,7 @@ const paramGenres = (query) => {
 
         // param = query;
 
+        // console.log('GENRES');
 
         param = {
             genres: query

@@ -5,10 +5,11 @@ import Platforms from "../../components/platforms/Platforms";
 import Image from "../../components/image/Image";
 
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Game = () => {
 
-    return(
+    return (
 
         <div className="game-page-holder mx-5">
 
@@ -26,12 +27,12 @@ const Game = () => {
                                 <p>Action, Strategy</p>
                                 <InfoDate text={'Relased'} date={'21.02.2002'} />
                                 <p>Rating: 4.27</p>
-                                <Platforms />
+                                {/* <Platforms /> */}
                             </div>
 
                             <div className="diagram-info-holder">
 
-                                
+
 
                             </div>
 
@@ -84,7 +85,7 @@ const Game = () => {
 
                         </div>
 
-                        
+
                     </div>
 
 

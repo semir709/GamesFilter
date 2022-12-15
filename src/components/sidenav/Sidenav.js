@@ -10,18 +10,10 @@ const Sidenav = ({ setQuery }) => {
 
   return (
     <div className="side-nav-holder ps-3">
-      <ul>
+      {/* <ul>
         <li>
           <p>All games</p>
         </li>
-        {/* <li>
-          <Navitem
-            text={"Platforms"}
-            val={"platforms"}
-            src={svg.box}
-            takeVal={takeVal}
-          />
-        </li> */}
         <li>
           <Navitem
             text={"All"}
@@ -54,9 +46,9 @@ const Sidenav = ({ setQuery }) => {
             takeVal={takeVal}
           />
         </li>
-      </ul>
+      </ul> */}
 
-      <ul className="mt-5">
+      < ul className="mt-5" >
         <li>
           <p>Genres</p>
         </li>
@@ -132,8 +124,8 @@ const Sidenav = ({ setQuery }) => {
             hasImg={false}
           />
         </li>
-      </ul>
-    </div>
+      </ ul>
+    </div >
   );
 };
 
