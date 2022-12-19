@@ -2,19 +2,19 @@ import "./main.css";
 import Header from "../../components/header/Header";
 import DropFilter from "../../components/dropdownFilter/DropFilter";
 import Card from "../../components/card/Card";
-import useSeperateApi from "../../utils/api/custApiFunction/useSeperateApi";
 import useApiCall from "../../utils/api/useApiCall";
 import Masonry from "react-masonry-css";
 
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useCallback } from "react";
+import { faBookSkull } from "@fortawesome/free-solid-svg-icons";
 
 const Main = ({ query }) => {
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState(false);
   const [finalQuery, setFinalQuery] = useState(query);
-
+  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     setFinalQuery(query);
@@ -25,21 +25,22 @@ const Main = ({ query }) => {
     setFinalQuery(filter);
   }, [filter]);
 
-  let { loading, error, data } = useApiCall(finalQuery, page);
+  let { loading, error, data, hasMore } = useApiCall(finalQuery, page, flag);
 
-  // const observer = useRef();
-  // const lastCardElementRef = useCallback((node) => {
-  //   if (loading) return
-  //   if (observer.current) observer.current.disconnect();
-  //   observer.current = new IntersectionObserver(entries => {
-  //     if (entries[0].isIntersecting) {
-  //       console.log(entries);
-  //     }
-  //   });
-  //   if (node) observer.current.observe(node);
+  const observer = useRef();
+  const lastCardElementRef = useCallback((node) => {
+    if (loading) return;
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver(entries => {
 
-  // });
+      if (entries[0].isIntersecting && hasMore) {
+        setPage((prev) => prev + 1);
+        setFlag(true);
+      }
 
+    });
+    if (node) observer.current.observe(node);
+  }, [loading, hasMore]);
 
 
   return (
@@ -55,7 +56,12 @@ const Main = ({ query }) => {
 
       <Masonry breakpointCols={4} className="my-masonry-grid">
         {data && data.map(({ name, released, background_image, rating, ratings, platforms, genres }, index) => {
-          return <Card text={name} src={background_image} released={released} genres={genres} rating={rating} platforms={platforms} key={index} />;
+          if (data.length === index + 1) {
+            return <Card ref={lastCardElementRef} text={name} src={background_image} released={released} genres={genres} rating={rating} platforms={platforms} key={index} />;
+          } else {
+            return <Card text={name} src={background_image} released={released} genres={genres} rating={rating} platforms={platforms} key={index} />;
+          }
+
         })}
       </Masonry>
     </div>

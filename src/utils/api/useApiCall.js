@@ -4,40 +4,24 @@ import paramDate from "./custApiFunction/params/paramDate";
 import paramGenres from "./custApiFunction/params/paramGenres";
 import paramFilter from "./custApiFunction/params/paramFilter";
 
-const useApiCall = (query, page) => {
+const useApiCall = (query, page, flag) => {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [data, setData] = useState([]);
+    const [hasMore, setHasMore] = useState(false);
     const [params, setParams] = useState({
         key: process.env.REACT_APP_KEY,
         page: page,
     });
 
-    // console.log(params);
-    // console.log(query);
+    params.page = page;
 
 
     let date = paramDate(query);
     let genres = paramGenres(query);
     let filterFinall = paramFilter(query);
 
-    // if (date) {
-
-    //     // Object.keys(params).forEach(key => {
-
-    //     //     if (key !== 'key' && key !== 'page') {
-    //     //         delete params[key];
-    //     //     }
-
-    //     // });
-
-    //     // Object.assign(params, date);
-
-    //     // console.log('date if');
-    //     // clearParamObject(params);
-    //     // Object.assign(params, date);
-    // }
     if (genres) {
 
         Object.keys(params).forEach(key => {
@@ -50,10 +34,12 @@ const useApiCall = (query, page) => {
 
         Object.assign(params, genres);
 
+
     }
     if (filterFinall) {
 
         Object.assign(params, filterFinall);
+
     }
 
     useEffect(() => {
@@ -63,15 +49,25 @@ const useApiCall = (query, page) => {
             params: params,
         }).then(res => {
 
-            setData(prev => {
-                return res.data.results.map(({ name, released, background_image, rating, ratings, platforms, genres }) => {
-                    return { name, released, background_image, rating, ratings, platforms, genres }
-                });
-            });
+            if (flag) {
 
-            // return [...prev, res.data.results.map(({ name, released, background_image, rating, ratings, platforms, genres }) => {
-            //     return { name, released, background_image, rating, ratings, platforms, genres }
-            // })]
+                setData(prev => {
+                    return [...prev, ...res.data.results.map(({ name, released, background_image, rating, ratings, platforms, genres }) => {
+                        return { name, released, background_image, rating, ratings, platforms, genres }
+                    })];
+                });
+
+            } else {
+
+                setData(prev => {
+                    return res.data.results.map(({ name, released, background_image, rating, ratings, platforms, genres }) => {
+                        return { name, released, background_image, rating, ratings, platforms, genres }
+                    });
+                });
+
+            }
+
+            setHasMore(res.data.results.length > 0);
             setLoading(false);
         }).catch(err => {
             console.log('Error')
@@ -81,8 +77,9 @@ const useApiCall = (query, page) => {
 
     }, [query, page]);
 
+    console.log(data);
 
-    return { loading, error, data };
+    return { loading, error, data, hasMore };
 
 
 }

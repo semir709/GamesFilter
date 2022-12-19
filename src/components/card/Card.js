@@ -2,29 +2,30 @@ import './card.css';
 import Image from '../image/Image.js'
 import Platforms from '../platforms/Platforms';
 import InfoDate from '../infoCard/InfoDate';
+import React from 'react';
 
-const Card = ({ text, src, released, genres, rating, platforms }) => {
+const Card = React.forwardRef((props, ref) => {
 
     return (
 
-        <div className="card-item">
+        <div className="card-item" ref={ref}>
 
 
             <div className='card-img-holder'>
-                <Image src={src} />
+                <Image src={props.src} />
             </div>
 
             <div className='info-card-holder'>
 
-                <h2>{text}</h2>
+                <h2>{props.text}</h2>
 
                 <div className='info-card'>
                     <div className='d-flex mb-3 genres-holder'>
-                        {genres.map(({ name }, Index) => {
-                            return <p key={Index} className='me-1'>{name}{genres.length - 1 === Index ? '' : ','}</p>
+                        {props.genres && props.genres.map(({ name }, Index) => {
+                            return <p key={Index} className='me-1'>{name}{props.genres.length - 1 === Index ? '' : ','}</p>
                         })}
                     </div>
-                    <InfoDate text={'Relased'} date={released} />
+                    <InfoDate text={'Relased'} date={props.released} />
                 </div>
 
                 <div className='d-flex justify-content-between mt-4 footer-card-info'>
@@ -32,18 +33,18 @@ const Card = ({ text, src, released, genres, rating, platforms }) => {
                     <div className='d-flex'>
                         <p className='me-2'>Rating: </p>
 
-                        {(rating < 1) && <p className='bad-rating'>{rating}</p>}
-                        {(rating > 1 && rating < 2) && <p className='bad-rating'>{rating}</p>}
-                        {(rating > 2 && rating < 3) && <p className='solid-rating'>{rating}</p>}
-                        {(rating > 3 && rating < 4) && <p className='good-rating'>{rating}</p>}
-                        {(rating > 4 && rating < 5) && <p className='excelent-rating'>{rating}</p>}
-                        {(rating >= 5) && <p className='excelent-rating'>{rating}</p>}
+                        {(props.rating < 1) && <p className='bad-rating'>{props.rating}</p>}
+                        {(props.rating > 1 && props.rating < 2) && <p className='bad-rating'>{props.rating}</p>}
+                        {(props.rating > 2 && props.rating < 3) && <p className='solid-rating'>{props.rating}</p>}
+                        {(props.rating > 3 && props.rating < 4) && <p className='good-rating'>{props.rating}</p>}
+                        {(props.rating > 4 && props.rating < 5) && <p className='excelent-rating'>{props.rating}</p>}
+                        {(props.rating >= 5) && <p className='excelent-rating'>{props.rating}</p>}
 
 
 
                     </div>
 
-                    <Platforms platforms={platforms} />
+                    {props.platforms && <Platforms platforms={props.platforms} />}
 
                 </div>
 
@@ -52,6 +53,6 @@ const Card = ({ text, src, released, genres, rating, platforms }) => {
         </div>
 
     );
-}
+})
 
 export default Card;
