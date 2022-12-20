@@ -8,24 +8,19 @@ import Masonry from "react-masonry-css";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useCallback } from "react";
-import { faBookSkull } from "@fortawesome/free-solid-svg-icons";
 
 const Main = ({ query }) => {
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState(false);
-  const [finalQuery, setFinalQuery] = useState(query);
-  const [flag, setFlag] = useState(false);
+  // const [finalQuery, setFinalQuery] = useState(query);
 
-  useEffect(() => {
-    setFinalQuery(query);
-    setFilter('');
-  }, [query]);
+  // useEffect(() => {
+  //   setFinalQuery(query);
+  //   setFilter('');
+  // }, [query]);
 
-  useEffect(() => {
-    setFinalQuery(filter);
-  }, [filter]);
 
-  let { loading, error, data, hasMore } = useApiCall(finalQuery, page, flag);
+  let { loading, error, data, hasMore } = useApiCall(query, page, filter);
 
   const observer = useRef();
   const lastCardElementRef = useCallback((node) => {
@@ -35,7 +30,6 @@ const Main = ({ query }) => {
 
       if (entries[0].isIntersecting && hasMore) {
         setPage((prev) => prev + 1);
-        setFlag(true);
       }
 
     });

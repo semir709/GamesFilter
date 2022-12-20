@@ -4,7 +4,7 @@ import paramDate from "./custApiFunction/params/paramDate";
 import paramGenres from "./custApiFunction/params/paramGenres";
 import paramFilter from "./custApiFunction/params/paramFilter";
 
-const useApiCall = (query, page, flag) => {
+const useApiCall = (query, page, filter) => {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -14,13 +14,23 @@ const useApiCall = (query, page, flag) => {
         key: process.env.REACT_APP_KEY,
         page: page,
     });
+    const [finalQuery, setFinalQuery] = useState(query);
 
     params.page = page;
 
+    useEffect(() => {
+        setFinalQuery(filter);
+    }, [filter]);
 
-    let date = paramDate(query);
-    let genres = paramGenres(query);
-    let filterFinall = paramFilter(query);
+    useEffect(() => {
+        setFinalQuery(query);
+    }, [query]);
+
+
+
+    let date = paramDate(finalQuery);
+    let genres = paramGenres(finalQuery);
+    let filterFinall = paramFilter(finalQuery);
 
     if (genres) {
 
@@ -39,33 +49,25 @@ const useApiCall = (query, page, flag) => {
     if (filterFinall) {
 
         Object.assign(params, filterFinall);
-
     }
 
     useEffect(() => {
+        setData([]);
+    }, [finalQuery]);
+
+    useEffect(() => {
+        setLoading(true);
 
         axios.get(`https://api.rawg.io/api/games`, {
             method: 'GET',
             params: params,
         }).then(res => {
 
-            if (flag) {
-
-                setData(prev => {
-                    return [...prev, ...res.data.results.map(({ name, released, background_image, rating, ratings, platforms, genres }) => {
-                        return { name, released, background_image, rating, ratings, platforms, genres }
-                    })];
-                });
-
-            } else {
-
-                setData(prev => {
-                    return res.data.results.map(({ name, released, background_image, rating, ratings, platforms, genres }) => {
-                        return { name, released, background_image, rating, ratings, platforms, genres }
-                    });
-                });
-
-            }
+            setData(prev => {
+                return [...prev, ...res.data.results.map(({ name, released, background_image, rating, ratings, platforms, genres }) => {
+                    return { name, released, background_image, rating, ratings, platforms, genres }
+                })];
+            });
 
             setHasMore(res.data.results.length > 0);
             setLoading(false);
@@ -75,9 +77,7 @@ const useApiCall = (query, page, flag) => {
         });
 
 
-    }, [query, page]);
-
-    console.log(data);
+    }, [finalQuery, page]);
 
     return { loading, error, data, hasMore };
 
