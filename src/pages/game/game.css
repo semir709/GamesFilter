@@ -1,4 +1,3 @@
-
 .game-page-holder {
 
     width: 90%;
@@ -12,7 +11,7 @@
     height: 10vh;
 }
 
-.info > * {
+.info>* {
     margin-bottom: 20px;
 }
 
@@ -31,10 +30,10 @@
     background-color: #fff;
 }
 
-.game-images {
+/* .game-images {
     width: 100%;
     flex-wrap: wrap;
-}
+} */
 
 .image-items {
     width: 49%;

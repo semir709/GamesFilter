@@ -4,16 +4,52 @@ import InfoDate from "../../components/infoCard/InfoDate";
 import Platforms from "../../components/platforms/Platforms";
 import Image from "../../components/image/Image";
 
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Rating from "../../components/rating/Rating";
+import parse from 'html-react-parser';
 
 const Game = () => {
+    const { id } = useParams();
+    const [data, setData] = useState(null);
+    const [screenshots, setScreenshots] = useState(null);
+
+    const endpoints = [
+        `https://api.rawg.io/api/games/${id}`,
+        `https://api.rawg.io/api/games/${id}/screenshots`
+    ]
+
+    useEffect(() => {
+        axios.all(
+            endpoints.map((endpoint) =>
+                axios.get(
+                    endpoint,
+                    {
+                        method: 'GET',
+                        params: { key: process.env.REACT_APP_KEY }
+                    }
+                ))).then(res => {
+                    setData(res[0].data);
+                    setScreenshots(res[1].data);
+                });
+    }, [id]);
+
+    console.log(data);
+    console.log(screenshots);
+
+    if (!data) return <p>Loading...</p>
 
     return (
 
         <div className="game-page-holder mx-5">
 
-            <Header text={'Civilization VI'} />
+            <Header text={data.name} />
+
+            <div className="game-desc mt-3 mb-5">
+                {parse(data.description)}
+            </div>
+
 
             <div className="game-info-holder mt-4">
 
@@ -21,18 +57,24 @@ const Game = () => {
 
                     <div className=" col-6 info-game ">
 
+
                         <div className="d-flex justify-content-between">
 
                             <div className="info">
-                                <p>Action, Strategy</p>
-                                <InfoDate text={'Relased'} date={'21.02.2002'} />
-                                <p>Rating: 4.27</p>
-                                {/* <Platforms /> */}
+                                <div className="d-flex">{data.genres.map(({ name, id }, Index) => {
+                                    return <p key={id} className='me-1'>{name}{data.genres.length - 1 === Index ? '' : ','}</p>
+                                })}</div>
+                                <InfoDate text={'Relased'} date={data.released} />
+                                <Rating rating={data.rating} />
                             </div>
 
                             <div className="diagram-info-holder">
 
-
+                                {/* <div className="progress">
+                                    <div className="progress-bar" role="progressbar" aria-label="Segment one" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div className="progress-bar bg-success" role="progressbar" aria-label="Segment two" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div className="progress-bar bg-info" role="progressbar" aria-label="Segment three" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div> */}
 
                             </div>
 
@@ -45,11 +87,41 @@ const Game = () => {
                                 <div className="line"></div>
                             </div>
 
-                            <div className="platform-info pt-4">
-                                <InfoDate text={'Windows'} date={'21.02.2002'} />
-                                <InfoDate text={'Xbox'} date={'21.02.2002'} />
-                                <InfoDate text={'Playstation'} date={'21.02.2002'} />
+                            <div>
+
+                                {data.platforms.map(({ platform, id }) => {
+                                    return <p className="my-2" key={platform.id}>{platform.name}</p>
+                                })}
+
                             </div>
+
+                        </div>
+
+                        <div className="store-info">
+
+                            <div className="platform-header">
+                                <p>Store to buy</p>
+                                <div className="line"></div>
+                            </div>
+
+                            <div>
+
+                                {data.stores.map(({ store, id }) => {
+                                    return <p className="my-2" key={store.id}>{store.name}</p>
+                                })}
+
+                            </div>
+
+                        </div>
+
+                        <div className="more-info">
+                            <div className="platform-header">
+                                <p>Website links</p>
+                                <div className="line"></div>
+                            </div>
+
+                            <a className="d-block" href={data.website} target="_blank">{data.name} Website</a>
+                            <a href={data.reddit_url} target="_blank">{data.reddit_name} Reddit</a>
 
                         </div>
 
@@ -58,30 +130,17 @@ const Game = () => {
                     <div className=" col-5 p-0 media-game">
 
                         <div className="game-video">
-                            <Image src={require('../../assets/images/civ.jpg')} />
+                            <Image src={data.background_image_additional} />
                         </div>
 
-                        <div className="game-images mb-4 d-flex justify-content-between">
+                        <div className=" mb-4 d-flex justify-content-between row">
 
-                            <div className=" image-items p-0 mt-2">
-                                <Image src={require('../../assets/images/civ.jpg')} />
-                            </div>
+                            {screenshots.results.map(({ image, id }) => {
+                                return <div key={id} className=" col-6 mt-2">
+                                    <Image src={image} />
+                                </div>
 
-                            <div className=" image-items p-0 mt-2">
-                                <Image src={require('../../assets/images/civ.jpg')} />
-                            </div>
-
-                            <div className=" image-items p-0 mt-2">
-                                <Image src={require('../../assets/images/civ.jpg')} />
-                            </div>
-
-                            <div className=" image-items p-0 mt-2">
-                                <Image src={require('../../assets/images/civ.jpg')} />
-                            </div>
-
-                            <div className="text-more-holder">
-                                <Link to={'/game/screenshots'} >See More....</Link>
-                            </div>
+                            })}
 
                         </div>
 
@@ -93,7 +152,7 @@ const Game = () => {
 
             </div>
 
-        </div>
+        </div >
 
     );
 }

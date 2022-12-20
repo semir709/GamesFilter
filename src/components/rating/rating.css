@@ -1,0 +1,15 @@
+.bad-rating {
+    color: #f90707 !important;
+}
+
+.solid-rating {
+    color: #d85600 !important;
+}
+
+.good-rating {
+    color: #d3c500 !important;
+}
+
+.excelent-rating {
+    color: #1efd00 !important;
+}

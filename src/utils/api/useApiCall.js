@@ -64,8 +64,8 @@ const useApiCall = (query, page, filter) => {
         }).then(res => {
 
             setData(prev => {
-                return [...prev, ...res.data.results.map(({ name, released, background_image, rating, ratings, platforms, genres }) => {
-                    return { name, released, background_image, rating, ratings, platforms, genres }
+                return [...prev, ...res.data.results.map(({ name, released, background_image, rating, ratings, platforms, genres, id }) => {
+                    return { name, released, background_image, rating, ratings, platforms, genres, id }
                 })];
             });
 
