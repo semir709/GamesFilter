@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Rating from "../../components/rating/Rating";
 import parse from 'html-react-parser';
+import LightBox from "../../components/lightBox/LightBox";
 
 const Game = () => {
     const { id } = useParams();
@@ -39,6 +40,7 @@ const Game = () => {
     console.log(screenshots);
 
     if (!data) return <p>Loading...</p>
+
 
     return (
 
@@ -135,12 +137,15 @@ const Game = () => {
 
                         <div className=" mb-4 d-flex justify-content-between row">
 
-                            {screenshots.results.map(({ image, id }) => {
+                            <LightBox data={screenshots.results} />
+
+
+                            {/* {screenshots.results.map(({ image, id }) => {
                                 return <div key={id} className=" col-6 mt-2">
                                     <Image src={image} />
                                 </div>
 
-                            })}
+                            })} */}
 
                         </div>
 
