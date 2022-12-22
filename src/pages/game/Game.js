@@ -10,15 +10,18 @@ import axios from "axios";
 import Rating from "../../components/rating/Rating";
 import parse from 'html-react-parser';
 import LightBox from "../../components/lightBox/LightBox";
+import Modal from "../../components/lightBox/components/Modal";
 
 const Game = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [screenshots, setScreenshots] = useState(null);
+    // const [movies, setMovies] = useState(null);
 
     const endpoints = [
         `https://api.rawg.io/api/games/${id}`,
-        `https://api.rawg.io/api/games/${id}/screenshots`
+        `https://api.rawg.io/api/games/${id}/screenshots`,
+        `https://api.rawg.io/api/games/${id}/movies`
     ]
 
     useEffect(() => {
@@ -31,13 +34,19 @@ const Game = () => {
                         params: { key: process.env.REACT_APP_KEY }
                     }
                 ))).then(res => {
+                    console.log(res[0]);
                     setData(res[0].data);
-                    setScreenshots(res[1].data);
+                    // setData(res[0].data);
+                    // console.log(res[2].data.results, '------------');
+                    // let media = res[2].data.concat(res[1].data.response);
+                    // setScreenshots(media);
                 });
     }, [id]);
 
-    console.log(data);
-    console.log(screenshots);
+    // console.log(data);
+    // console.log(screenshots);
+
+
 
     if (!data) return <p>Loading...</p>
 
@@ -131,22 +140,13 @@ const Game = () => {
 
                     <div className=" col-5 p-0 media-game">
 
-                        <div className="game-video">
+                        {/* <div className="game-video">
                             <Image src={data.background_image_additional} />
-                        </div>
+                        </div> */}
 
-                        <div className=" mb-4 d-flex justify-content-between row">
-
-                            <LightBox data={screenshots.results} />
-
-
-                            {/* {screenshots.results.map(({ image, id }) => {
-                                return <div key={id} className=" col-6 mt-2">
-                                    <Image src={image} />
-                                </div>
-
-                            })} */}
-
+                        <div className=" mb-4 d-flex justify-content-between row ">
+                            {/* <LightBox data={screenshots.results} /> */}
+                            <LightBox />
                         </div>
 
 
