@@ -15,7 +15,7 @@ import Modal from "../../components/lightBox/components/Modal";
 const Game = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
-    const [screenshots, setScreenshots] = useState(null);
+    const [media, setMedia] = useState(null);
     // const [movies, setMovies] = useState(null);
 
     const endpoints = [
@@ -34,18 +34,11 @@ const Game = () => {
                         params: { key: process.env.REACT_APP_KEY }
                     }
                 ))).then(res => {
-                    console.log(res[0]);
                     setData(res[0].data);
-                    // setData(res[0].data);
-                    // console.log(res[2].data.results, '------------');
-                    // let media = res[2].data.concat(res[1].data.response);
-                    // setScreenshots(media);
+                    const m = res[2].data.results.concat(res[1].data.results);
+                    setMedia(m);
                 });
     }, [id]);
-
-    // console.log(data);
-    // console.log(screenshots);
-
 
 
     if (!data) return <p>Loading...</p>
@@ -146,7 +139,7 @@ const Game = () => {
 
                         <div className=" mb-4 d-flex justify-content-between row ">
                             {/* <LightBox data={screenshots.results} /> */}
-                            <LightBox />
+                            <LightBox media={media} />
                         </div>
 
 

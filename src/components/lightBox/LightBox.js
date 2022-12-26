@@ -1,86 +1,64 @@
 
-import { useRef } from "react";
 import { useState } from "react";
 import Modal from "./components/Modal";
 import './lightBox.css';
 
-const data = [
-    {
-        url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-        type: 'mp4',
-        img: 'https://images.pexels.com/photos/14683126/pexels-photo-14683126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-    },
-    {
-        url: 'https://images.pexels.com/photos/14683126/pexels-photo-14683126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        type: 'jpg'
-    },
-    {
-        url: 'https://images.pexels.com/photos/10769588/pexels-photo-10769588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        type: 'jpg'
-    },
-    {
-        url: 'https://images.pexels.com/photos/14840714/pexels-photo-14840714.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        type: 'jpg'
-    },
-    {
-        url: 'https://images.pexels.com/photos/14480454/pexels-photo-14480454.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        type: 'jpg'
-    },
-    {
-        url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-        type: 'mp4',
-        img: 'https://images.pexels.com/photos/14683126/pexels-photo-14683126.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-    },
-];
-
-const LightBox = () => {
+const LightBox = ({ media }) => {
 
     const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(null);
-    const [type, setType] = useState(null);
+    // const [type, setType] = useState(null);
 
     const handleClick = (item, index, e) => {
 
         setCurrentIndex(index);
-        setClickedImg(item.url);
-        setType(item.type);
+        setClickedImg(item.image);
+        // setType(item.type); 
     };
 
     const handelRotationLeft = () => {
-        const totalLength = data.length;
+        const totalLength = media.length;
         if (currentIndex === 0) {
             setCurrentIndex(totalLength - 1);
-            const newUrl = data[totalLength - 1].url;
+            let newUrl;
+            if (media[totalLength - 1].image?.length > 0) newUrl = media[totalLength - 1].image;
+            if (media[totalLength - 1].data?.max.length > 0) newUrl = media[totalLength - 1].data.max;
             setClickedImg(newUrl);
             return;
         }
         const newIndex = currentIndex - 1;
-        const newUrl = data.filter((item) => {
-            return data.indexOf(item) === newIndex;
+        const newUrl = media.filter((item) => {
+            return media.indexOf(item) === newIndex;
         });
-        const newItem = newUrl[0].url;
+        let newItem;
+        if (newUrl[0].image?.length > 0) newItem = newUrl[0].image;
+        if (newUrl[0].data?.max.length > 0) newItem = newUrl[0].data.max;
         const newType = newUrl[0].type;
         setClickedImg(newItem);
-        setType(newType);
         setCurrentIndex(newIndex);
     };
 
     const handelRotationRight = () => {
-        const totalLength = data.length;
+        const totalLength = media.length;
         if (currentIndex + 1 >= totalLength) {
             setCurrentIndex(0);
-            const newUrl = data[0].url;
+            // const newUrl = media[0].url;
+            let newUrl;
+            if (media[0].image?.length > 0) newUrl = media[0].image;
+            if (media[0].data?.max.length > 0) newUrl = media[0].data.max;
             setClickedImg(newUrl);
             return;
         }
         const newIndex = currentIndex + 1;
-        const newUrl = data.filter((item) => {
-            return data.indexOf(item) === newIndex;
+        const newUrl = media.filter((item) => {
+            return media.indexOf(item) === newIndex;
         });
-        const newItem = newUrl[0].url;
+        // const newItem = newUrl[0].url;
+        let newItem;
+        if (newUrl[0].image?.length > 0) newItem = newUrl[0].image;
+        if (newUrl[0].data?.max.length > 0) newItem = newUrl[0].data.max;
         const newType = newUrl[0].type;
         setClickedImg(newItem);
-        setType(newType);
         setCurrentIndex(newIndex);
     };
 
@@ -89,15 +67,15 @@ const LightBox = () => {
 
         <div className="light-box-wrapper">
 
-            {data.map((prop, index) => {
+            {media.map((prop, index) => {
 
-                if (prop.type === 'mp4') {
-                    return <div key={index} className="content-wrapper wrapper-video">
-                        <video src={prop.url} controls poster={prop.img}></video>
+                if (prop.data?.max.length > 0) {
+                    return <div key={prop.id} className="content-wrapper wrapper-video">
+                        <video src={prop.data.max} controls poster={prop.preview}></video>
                     </div>
-                } else {
-                    return <div key={index} className="content-wrapper">
-                        <img src={prop.url} onClick={(e) => handleClick(prop, index, e)}></img>
+                } else if (prop.image?.length > 0) {
+                    return <div key={prop.id} className="content-wrapper">
+                        <img src={prop.image} onClick={(e) => handleClick(prop, index, e)}></img>
                     </div>
                 }
             })}
@@ -110,7 +88,7 @@ const LightBox = () => {
                         handelRotationRight={handelRotationRight}
                         setClickedImg={setClickedImg}
                         handelRotationLeft={handelRotationLeft}
-                        type={type}
+                    // type={type}
                     />
                 )}
 
