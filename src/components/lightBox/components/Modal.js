@@ -15,11 +15,13 @@ const Modal = ({
         }
     };
 
+    console.log(type);
+
     return (
 
         <div className="overlay flex" onClick={handleClick}>
 
-            {type === 'mp4' && <video src={clickedImg} autoPlay></video>}
+            {type === 'mp4' && <video src={clickedImg} controls autoPlay></video>}
             {type === 'jpg' && <img src={clickedImg} alt="" />}
 
 
