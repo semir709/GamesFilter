@@ -1,4 +1,5 @@
 
+import { useRef } from "react";
 import { useState } from "react";
 import ReactImageVideoLightbox from "react-image-video-lightbox";
 import Modal from "./components/Modal";
@@ -39,7 +40,8 @@ const LightBox = () => {
     const [currentIndex, setCurrentIndex] = useState(null);
     const [type, setType] = useState(null);
 
-    const handleClick = (item, index) => {
+    const handleClick = (item, index, e) => {
+
         setCurrentIndex(index);
         setClickedImg(item.url);
         setType(item.type);
@@ -80,28 +82,6 @@ const LightBox = () => {
     };
 
 
-    const startPlay = (e) => {
-
-        const video = e.target.closest('.wrapper-video').querySelector('video');
-        const image = e.target.closest('.img-media-wrapper').querySelector('img');
-        const play_btn = e.target.closest('.play-btn') !== null ? e.target.closest('.play-btn') : e.target.querySelector('.play-btn');
-
-        console.log(play_btn);
-
-        image.style.display = 'none';
-
-        if (video.currentTime > 0 && video.paused === false && video.ended === false) {
-            video.pause();
-            play_btn.classList.remove('hide');
-        } else {
-            video.play();
-            play_btn.classList.add('hide');
-        }
-
-
-    }
-
-
     return (
 
         <div className="light-box-wrapper">
@@ -109,21 +89,12 @@ const LightBox = () => {
             {data.map((prop, index) => {
 
                 if (prop.type === 'mp4') {
-                    return <div className="content-wrapper wrapper-video">
-                        <video src={prop.url} ></video>
-                        <div className="img-media-wrapper" onClick={startPlay}>
-                            <img src={prop.img} alt="" />
-                            <div className="play-btn" onClick={startPlay}>
-                                btn
-                            </div>
-                            <div className="big-screen" onClick={() => handleClick(prop, index)}>
-                                big
-                            </div>
-                        </div>
+                    return <div key={index} className="content-wrapper wrapper-video">
+                        <video src={prop.url} controls poster={prop.img}></video>
                     </div>
                 } else {
-                    return <div className="content-wrapper">
-                        <img src={prop.url} onClick={() => handleClick(prop, index)}></img>
+                    return <div key={index} className="content-wrapper">
+                        <img src={prop.url} onClick={(e) => handleClick(prop, index, e)}></img>
                     </div>
                 }
             })}
