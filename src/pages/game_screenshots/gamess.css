@@ -1,28 +1,91 @@
-.game-ss-holder {
-    width: 90%;
-    padding-top: 70px;
-    font-size: 20px;
-}
-
-.images-holder {
+.game-ss-wrapper {
     width: 100%;
-    flex-wrap: wrap;
     display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
 }
 
-.image-items {
+.game-ss-wrapper .content-wrapper {
     width: 30%;
-    margin-right: 15px;
+    height: 250px;
+    margin: 10px 5px;
 }
 
-.image-items image {
+.game-ss-wrapper .content-wrapper:first-child {
+    width: 30%;
+    height: 250px;
+}
+
+.game-ss-wrapper .content-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.game-ss-wrapper .content-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.game-ss-wrapper .wrapper-video {
+    position: relative;
+}
+
+.game-ss-wrapper .wrapper-video .img-media-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.game-ss-wrapper .img-media-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.image-items video {
+
+.game-ss-wrapper .content-more {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background-color: #272727;
+    border-radius: 10px;
+    position: relative;
+}
+
+.game-ss-wrapper .content-more:hover {
+    cursor: pointer;
+    background-color: #545454;
+    transition: 1s;
+}
+
+.game-ss-wrapper .content-more-items {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.game-ss-wrapper .content-more-items p {
+    font-size: 13px;
+    color: #ababab;
+}
+
+.game-ss-wrapper .content-more img {
+    width: 50px;
+    height: 30px;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
 }

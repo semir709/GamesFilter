@@ -10,7 +10,7 @@ import Modal from "../../components/lightBox/components/Modal";
 const GameSS = () => {
     const { id } = useParams();
     const [media, setMedia] = useState(null);
-
+    const [name, setName] = useState(null);
     const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(null);
 
@@ -69,6 +69,7 @@ const GameSS = () => {
     };
 
     const endpoints = [
+        `https://api.rawg.io/api/games/${id}`,
         `https://api.rawg.io/api/games/${id}/screenshots`,
         `https://api.rawg.io/api/games/${id}/movies`
     ]
@@ -83,7 +84,8 @@ const GameSS = () => {
                         params: { key: process.env.REACT_APP_KEY }
                     }
                 ))).then(res => {
-                    const m = res[1].data.results.concat(res[0].data.results);
+                    setName(res[0].data.name);
+                    const m = res[2].data.results.concat(res[1].data.results);
                     setMedia(m);
                 });
     }, [id]);
@@ -94,23 +96,23 @@ const GameSS = () => {
 
     return (
 
-        <div className="game-ss-holder">
-            <Header text={'Civilization VI'} />
+        <div className="game-ss-holder ">
+            <Header text={name} />
 
             <div className="disc-text mt-5">
                 <p>Screen shots</p>
             </div>
 
-            <div className="d-flex mb-5 images-holder">
+            <div className="d-flex mb-5 game-ss-wrapper">
 
                 {media.map((prop, index) => {
 
                     if (prop.data?.max.length > 0) {
-                        return <div key={prop.id} className="image-items p-0 mt-2">
+                        return <div key={prop.id} className="content-wrapper">
                             <video src={prop.data.max} controls poster={prop.preview}></video>
                         </div>
                     } else if (prop.image?.length > 0) {
-                        return <div key={index} className=" image-items p-0 mt-2">
+                        return <div key={index} className="content-wrapper">
                             <img src={prop.image} onClick={(e) => handleClick(prop, index, e)}></img>
                         </div>
                     }
