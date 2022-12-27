@@ -75,8 +75,6 @@ const Navbar = () => {
         }
     }
 
-
-
     return (
 
         <header className="navbar-holder d-flex justify-content-between align-items-center mt-3 px-3">
@@ -97,11 +95,17 @@ const Navbar = () => {
 
                 <div className='search-res-wrapper'>
 
-                    {searchMenu && <div className='res-item'>
-                        <img src="https://images.pexels.com/photos/14840714/pexels-photo-14840714.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" />
-                        <p >Name of the game</p>
-                    </div>
-                    }
+                    {!data && <div>Loading...</div>}
+
+                    {searchMenu && data.map(({ name, id, background_image }) => {
+                        return <Link to={`game/${id}`} key={id}>
+                            <div className='res-item'>
+                                <img src={background_image} alt="" />
+                                <p>{name}</p>
+                            </div>
+                        </Link>
+
+                    })}
                 </div>
 
             </div>
