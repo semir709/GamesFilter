@@ -1,5 +1,3 @@
-
-
 .game-ss-holder {
     width: 90%;
     padding-top: 70px;
@@ -9,9 +7,22 @@
 .images-holder {
     width: 100%;
     flex-wrap: wrap;
+    display: flex;
 }
 
-.image-items{
+.image-items {
     width: 30%;
     margin-right: 15px;
+}
+
+.image-items image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-items video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

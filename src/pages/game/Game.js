@@ -139,7 +139,7 @@ const Game = () => {
 
                         <div className=" mb-4 d-flex justify-content-between row ">
                             {/* <LightBox data={screenshots.results} /> */}
-                            <LightBox media={media} />
+                            <LightBox media={media} more_id={id} />
                         </div>
 
 

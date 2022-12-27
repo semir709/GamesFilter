@@ -39,7 +39,7 @@ function App() {
             <Route path='/' element={<Main query={query} />} />
             {/* <Route path='/home' element={<Main query={query} />} /> */}
             <Route path='/game/:id' element={<Game />} />
-            <Route path='/game/screenshots' element={<GameSS />} />
+            <Route path='/game/:id/screenshots' element={<GameSS />} />
 
           </Routes>
 

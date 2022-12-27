@@ -2,8 +2,10 @@
 import { useState } from "react";
 import Modal from "./components/Modal";
 import './lightBox.css';
+import dots from '../../assets/svg/dots.svg';
+import { Link } from "react-router-dom";
 
-const LightBox = ({ media }) => {
+const LightBox = ({ media, more_id }) => {
 
     const [clickedImg, setClickedImg] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(null);
@@ -62,12 +64,14 @@ const LightBox = ({ media }) => {
         setCurrentIndex(newIndex);
     };
 
+    console.log(media);
+
 
     return (
 
         <div className="light-box-wrapper">
 
-            {media.map((prop, index) => {
+            {media.slice(0, 4).map((prop, index) => {
 
                 if (prop.data?.max.length > 0) {
                     return <div key={prop.id} className="content-wrapper wrapper-video">
@@ -79,20 +83,32 @@ const LightBox = ({ media }) => {
                     </div>
                 }
             })}
+            {/* Add more */}
 
-            <div>
-
-                {clickedImg && (
-                    <Modal
-                        clickedImg={clickedImg}
-                        handelRotationRight={handelRotationRight}
-                        setClickedImg={setClickedImg}
-                        handelRotationLeft={handelRotationLeft}
-                    // type={type}
-                    />
-                )}
-
+            <div className="content-wrapper">
+                <Link to={`screenshots`}>
+                    <div className="content-more">
+                        <div className="content-more-items">
+                            <img src={dots} alt="" />
+                            <p>view all</p>
+                        </div>
+                    </div>
+                </Link>
             </div>
+
+
+
+            {clickedImg && (
+                <Modal
+                    clickedImg={clickedImg}
+                    handelRotationRight={handelRotationRight}
+                    setClickedImg={setClickedImg}
+                    handelRotationLeft={handelRotationLeft}
+                // type={type}
+                />
+            )}
+
+
 
         </div>
 
