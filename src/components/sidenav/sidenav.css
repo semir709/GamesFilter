@@ -1,8 +1,8 @@
-
-
 .side-nav-holder {
     min-width: 180px;
     padding-top: 70px;
+    position: fixed;
+    height: 600px;
 }
 
 .side-nav-holder ul {

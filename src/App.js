@@ -27,7 +27,9 @@ function App() {
 
         <div className='d-flex justify-content-between'>
 
-          <Sidenav />
+          <div className='sidenav-wrapper'>
+            <Sidenav />
+          </div>
 
           <Routes>
 
