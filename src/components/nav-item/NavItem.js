@@ -1,20 +1,20 @@
 
 import './navItem.css';
 
-const Navitem = ({hasImg, src, text, takeVal, val}) => {
+const Navitem = ({ hasImg, src, text, val }) => {
 
-    return(
+    return (
 
-        <div className='d-flex align-items-center items-holder' data-val={val} onClick={takeVal}>
-                        
-             {hasImg === false ? '' : 
+        <div className='d-flex align-items-center items-holder' data-val={val}>
 
-             <div className='icon-box'>
-                <img src={src} alt="" />
-            </div>
-            }           
+            {hasImg === false ? '' :
 
-            <p>{text}</p>  
+                <div className='icon-box'>
+                    <img src={src} alt="" />
+                </div>
+            }
+
+            <p>{text}</p>
 
         </div>
 

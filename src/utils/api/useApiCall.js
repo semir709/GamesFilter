@@ -3,6 +3,7 @@ import axios from "axios";
 import paramDate from "./custApiFunction/params/paramDate";
 import paramGenres from "./custApiFunction/params/paramGenres";
 import paramFilter from "./custApiFunction/params/paramFilter";
+import { type } from "@testing-library/user-event/dist/type";
 
 const useApiCall = (query, page, filter) => {
 
@@ -19,41 +20,30 @@ const useApiCall = (query, page, filter) => {
     params.page = page;
 
     useEffect(() => {
+        let filterFinall = paramFilter(filter);
+        Object.assign(params, filterFinall);
         setFinalQuery(filter);
+        setData([]);
     }, [filter]);
 
     useEffect(() => {
-        setFinalQuery(query);
-    }, [query]);
-
-
-
-    let date = paramDate(finalQuery);
-    let genres = paramGenres(finalQuery);
-    let filterFinall = paramFilter(finalQuery);
-
-    if (genres) {
 
         Object.keys(params).forEach(key => {
-
             if (key !== 'key' && key !== 'page') {
                 delete params[key];
             }
-
         });
+        if (typeof query === 'undefined') {
+            setFinalQuery({
+                key: process.env.REACT_APP_KEY,
+                page: page,
+            });
+        } else if (query.length > 0) params.genres = query;
 
-        Object.assign(params, genres);
-
-
-    }
-    if (filterFinall) {
-
-        Object.assign(params, filterFinall);
-    }
-
-    useEffect(() => {
+        setFinalQuery(query);
         setData([]);
-    }, [finalQuery]);
+
+    }, [query]);
 
     useEffect(() => {
         setLoading(true);
@@ -72,12 +62,11 @@ const useApiCall = (query, page, filter) => {
             setHasMore(res.data.results.length > 0);
             setLoading(false);
         }).catch(err => {
-            console.log('Error')
             setError(true);
         });
 
 
-    }, [finalQuery, page]);
+    }, [page, finalQuery]);
 
     return { loading, error, data, hasMore };
 

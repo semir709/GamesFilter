@@ -8,13 +8,15 @@ import Masonry from "react-masonry-css";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useCallback } from "react";
+import { useParams } from "react-router-dom";
 
-const Main = ({ query }) => {
+const Main = () => {
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState(false);
 
+  const { category } = useParams();
 
-  let { loading, error, data, hasMore } = useApiCall(query, page, filter);
+  let { loading, error, data, hasMore } = useApiCall(category, page, filter);
 
   const observer = useRef();
   const lastCardElementRef = useCallback((node) => {

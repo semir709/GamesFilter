@@ -10,7 +10,7 @@ const Card = React.forwardRef((props, ref) => {
 
     return (
 
-        <Link to={`game/${props.card_id}`}>
+        <Link to={`/game/${props.card_id}`}>
 
             <div className="card-item" ref={ref}>
 

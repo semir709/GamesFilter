@@ -15,12 +15,7 @@ import Sidenav from './components/sidenav/Sidenav';
 import { useState } from 'react';
 
 function App() {
-
-  // let [category, setCategory] = useState('games');
-  let [query, setQuery] = useState('all');
-
-  // console.log(query, 'query');
-  // console.log(category, 'category');
+  // let [query, setQuery] = useState('all');
 
   return (
     <div className="App">
@@ -32,11 +27,14 @@ function App() {
 
         <div className='d-flex justify-content-between'>
 
-          <Sidenav setQuery={setQuery} />
+          <Sidenav />
 
           <Routes>
 
-            <Route path='/' element={<Main query={query} />} />
+            <Route path='/:category' element={<Main />} />
+            <Route path='/:category/:filter' element={<Main />} />
+            <Route path='/' element={<Main />} />
+            <Route path='/:filter' element={<Main />} />
             {/* <Route path='/home' element={<Main query={query} />} /> */}
             <Route path='/game/:id' element={<Game />} />
             <Route path='/game/:id/screenshots' element={<GameSS />} />

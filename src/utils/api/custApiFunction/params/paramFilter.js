@@ -10,8 +10,6 @@ const paramFilter = (query) => {
         const firstDay = '2004-01-01';
         const lastDay = formatDate(new Date(currentYear, 11, 31));
 
-        console.log(firstDay + ',' + lastDay);
-
         param = {
             ordering: 'released',
             dates: firstDay + ',' + lastDay
