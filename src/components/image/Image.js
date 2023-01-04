@@ -1,11 +1,18 @@
+import { useState } from 'react';
 import './image.css'
+import civ from '../../assets/images/civ.jpg';
 
-const Image = ({src}) => {
+const Image = ({ src }) => {
 
-    return(
+    const isLoaded = (e) => {
+        console.log(e.target);
+        e.target.src = src;
+    }
+
+    return (
 
         <div className="img-holder">
-            <img src={src} alt="" />
+            <img src={civ} alt={src} onLoad={isLoaded} />
         </div>
 
     );

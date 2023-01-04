@@ -3,14 +3,15 @@ import Image from '../image/Image.js'
 import Platforms from '../platforms/Platforms';
 import InfoDate from '../infoCard/InfoDate';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, ScrollRestoration } from 'react-router-dom';
 import Rating from '../rating/Rating';
+import { memo } from 'react';
 
 const Card = React.forwardRef((props, ref) => {
 
     return (
 
-        <Link to={`/game/${props.card_id}`}>
+        <Link to={`/game/${props.card_id}`} preventScrollReset={true} target={'_blank'}>
 
             <div className="card-item" ref={ref}>
 
@@ -46,7 +47,8 @@ const Card = React.forwardRef((props, ref) => {
 
         </Link>
 
+
     );
 })
 
-export default Card;
+export default memo(Card);

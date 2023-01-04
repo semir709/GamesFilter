@@ -24,6 +24,7 @@ const useApiCall = (query, page, filter) => {
         Object.assign(params, filterFinall);
         setFinalQuery(filter);
         setData([]);
+        setLoading(false);
     }, [filter]);
 
     useEffect(() => {
@@ -42,6 +43,7 @@ const useApiCall = (query, page, filter) => {
 
         setFinalQuery(query);
         setData([]);
+        setLoading(false);
 
     }, [query]);
 
