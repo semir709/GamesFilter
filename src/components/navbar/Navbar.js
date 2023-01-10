@@ -9,7 +9,7 @@ import Sidenav from '../sidenav/Sidenav';
 
 import './navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ setNewSelected }) => {
 
     const [searchMenu, setSearchMenu] = useState(false);
     const [search, setSearch] = useState('');
@@ -106,12 +106,16 @@ const Navbar = () => {
         }
     }, []);
 
+    const logoClick = () => {
+        console.log('asd');
+    }
+
     return (
 
 
         <header className={`${showNavBar && 'navbar-holder-show '}  navbar-holder d-flex justify-content-between align-items-center mt-3 px-3`}>
 
-            <Link to={'/'}>Logo</Link>
+            <Link to={'/'} onClick={() => setNewSelected('All Games')}>Logo</Link>
 
             <div className='search-wrapper'>
 

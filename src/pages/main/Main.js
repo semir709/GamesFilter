@@ -18,11 +18,12 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query"
+import { Component } from "react";
 
 
 const queryClient = new QueryClient();
 
-const Main = () => {
+const Main = ({ text }) => {
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState(false);
   const { category } = useParams();
@@ -83,7 +84,7 @@ const Main = () => {
 
   return (
     <div className="main-holder mx-5">
-      <Header text={"All games"} />
+      <Header text={text} />
 
       <div className="d-flex">
         <DropFilter text={filter} setFilter={setFilter} />

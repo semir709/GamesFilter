@@ -3,11 +3,15 @@ import Navitem from "../nav-item/NavItem";
 import svg from "../../utils/svg";
 import { Link } from "react-router-dom";
 
-const Sidenav = ({ setQuery, onClick }) => {
+const Sidenav = ({ setNewSelected }) => {
   // const takeVal = (e) => {
   //   const value = e.target.closest(".items-holder").getAttribute("data-val");
   //   setQuery(value);
   // };
+
+  const onClick = (e) => {
+    setNewSelected(e.target.innerHTML);
+  }
 
   return (
     <div className="side-nav-holder ps-3">
