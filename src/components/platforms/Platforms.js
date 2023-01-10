@@ -1,4 +1,5 @@
 import svg from "../../utils/svg";
+import './platforms.css';
 
 const Platforms = ({ platforms }) => {
 
@@ -13,11 +14,13 @@ const Platforms = ({ platforms }) => {
 
                     switch (platform.slug) {
                         case 'pc':
-                            return <img key={index} className='mx-1' src={svg.windows} alt={platform.slug} />
+                            return <div className="img-platform-wrapper mx-1">
+                                <img key={index} src={svg.windows} alt={platform.slug} />
+                            </div>
                         case 'playstation4':
-                            return <img key={index} className='mx-1' src={svg.playstation} alt={platform.slug} />
+                            return <div className="img-platform-wrapper  mx-1"><img key={index} src={svg.playstation} alt={platform.slug} /></div>
                         case 'xbox-series-x':
-                            return <img key={index} className='mx-1' src={svg.xbox} alt={platform.slug} />
+                            return <div className="img-platform-wrapper  mx-1"><img key={index} src={svg.xbox} alt={platform.slug} /></div>
                         default:
                             return ''
 

@@ -106,10 +106,6 @@ const Navbar = ({ setNewSelected }) => {
         }
     }, []);
 
-    const logoClick = () => {
-        console.log('asd');
-    }
-
     return (
 
 
