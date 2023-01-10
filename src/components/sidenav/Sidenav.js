@@ -3,7 +3,7 @@ import Navitem from "../nav-item/NavItem";
 import svg from "../../utils/svg";
 import { Link } from "react-router-dom";
 
-const Sidenav = ({ setQuery }) => {
+const Sidenav = ({ setQuery, onClick }) => {
   // const takeVal = (e) => {
   //   const value = e.target.closest(".items-holder").getAttribute("data-val");
   //   setQuery(value);
@@ -16,7 +16,7 @@ const Sidenav = ({ setQuery }) => {
           <p>Genres</p>
         </li>
         <li>
-          <Link to={'action'}>
+          <Link to={'action'} onClick={onClick}>
             <Navitem
               text={"Action"}
               val={"action"}
@@ -25,7 +25,7 @@ const Sidenav = ({ setQuery }) => {
           </Link>
         </li>
         <li>
-          <Link to={'strategy'}>
+          <Link to={'strategy'} onClick={onClick}>
             <Navitem
               text={"Strategy"}
               val={"strategy"}
@@ -34,7 +34,7 @@ const Sidenav = ({ setQuery }) => {
           </Link>
         </li>
         <li>
-          <Link to={"role-playing-games-rpg"}>
+          <Link to={"role-playing-games-rpg"} onClick={onClick}>
             <Navitem
               text={"RPG"}
               val={"role-playing-games-rpg"}
@@ -43,7 +43,7 @@ const Sidenav = ({ setQuery }) => {
           </Link>
         </li>
         <li>
-          <Link to={"shooter"}>
+          <Link to={"shooter"} onClick={onClick}>
             <Navitem
               text={"Shooter"}
               val={"shooter"}
@@ -52,7 +52,7 @@ const Sidenav = ({ setQuery }) => {
           </Link>
         </li>
         <li>
-          <Link to={"adventure"}>
+          <Link to={"adventure"} onClick={onClick}>
             <Navitem
               text={"Adventure"}
               val={"adventure"}
@@ -61,7 +61,7 @@ const Sidenav = ({ setQuery }) => {
           </Link>
         </li>
         <li>
-          <Link to={"puzzle"}>
+          <Link to={"puzzle"} onClick={onClick}>
             <Navitem
               text={"Puzzle"}
               val={"puzzle"}
@@ -70,7 +70,7 @@ const Sidenav = ({ setQuery }) => {
           </Link>
         </li>
         <li>
-          <Link to={"racing"}>
+          <Link to={"racing"} onClick={onClick}>
             <Navitem
               text={"Racing"}
               val={"racing"}
@@ -79,7 +79,7 @@ const Sidenav = ({ setQuery }) => {
           </Link>
         </li>
         <li>
-          <Link to={"sports"}>
+          <Link to={"sports"} onClick={onClick}>
             <Navitem
               text={"Sport"}
               val={"sports"}

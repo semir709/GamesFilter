@@ -14,6 +14,11 @@ import Navbar from './components/navbar/Navbar';
 import Sidenav from './components/sidenav/Sidenav';
 import { useState } from 'react';
 
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+
+
+const queryClient = new QueryClient();
+
 function App() {
   // let [query, setQuery] = useState('all');
 
@@ -31,17 +36,21 @@ function App() {
             <Sidenav />
           </div>
 
-          <Routes>
 
-            <Route path='/:category' element={<Main />} />
-            <Route path='/:category/:filter' element={<Main />} />
-            <Route path='/' element={<Main />} />
-            <Route path='/:filter' element={<Main />} />
-            {/* <Route path='/home' element={<Main query={query} />} /> */}
-            <Route path='/game/:id' element={<Game />} />
-            <Route path='/game/:id/screenshots' element={<GameSS />} />
+          <QueryClientProvider client={queryClient}>
+            <Routes>
 
-          </Routes>
+              <Route path='/:category' element={<Main />} />
+              <Route path='/:category/:filter' element={<Main />} />
+              <Route path='/' element={<Main />} />
+              <Route path='/:filter' element={<Main />} />
+              {/* <Route path='/home' element={<Main query={query} />} /> */}
+              <Route path='/game/:id' element={<Game />} />
+              <Route path='/game/:id/screenshots' element={<GameSS />} />
+
+            </Routes>
+
+          </QueryClientProvider>
 
         </div>
 

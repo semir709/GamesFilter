@@ -15,11 +15,12 @@ const Navbar = () => {
     const [search, setSearch] = useState('');
     const [data, setData] = useState(null);
     const inputRef = useRef(null);
+    const [toggleSidebar, setToggleSidebar] = useState(false);
 
     const click_menu_btn = (e) => {
-        const menu_items = document.querySelector('#mobile-side-content');
-        menu_items.classList.add('show-menu-items');
-
+        // const menu_items = document.querySelector('#mobile-side-content');
+        // menu_items.classList.add('show-menu-items');
+        setToggleSidebar(true);
         const overlay = document.querySelector('#overlay');
 
         overlay.classList.add('show-overlay');
@@ -27,12 +28,12 @@ const Navbar = () => {
     }
 
     const click_close_btn = (e) => {
-        const menu_items = document.querySelector('#mobile-side-content');
-        menu_items.classList.remove('show-menu-items');
+        setToggleSidebar(false);
+        // const menu_items = document.querySelector('#mobile-side-content');
+        // menu_items.classList.remove('show-menu-items');
         const overlay = document.querySelector('#overlay');
 
         overlay.classList.remove('show-overlay');
-
         document.body.classList.remove('stop-scrolling');
     }
 
@@ -75,6 +76,14 @@ const Navbar = () => {
         }
     }
 
+    const sideClick = () => {
+        console.log('Hey');
+        const overlay = document.querySelector('#overlay');
+        overlay.classList.remove('show-overlay');
+        document.body.classList.remove('stop-scrolling');
+        setToggleSidebar(false);
+    }
+
     return (
 
         <header className="navbar-holder d-flex justify-content-between align-items-center mt-3 px-3">
@@ -114,22 +123,29 @@ const Navbar = () => {
 
             <div className='mobile-side-content-holder'>
 
+                {/* <div className='mobile-menu-open' onClick={click_menu_btn}>
+                    <img src={svg.menu} alt="asd" />
+                </div> */}
+
                 <div className='mobile-menu-open' onClick={click_menu_btn}>
                     <img src={svg.menu} alt="asd" />
                 </div>
 
-                <div className='mobile-side-content' id='mobile-side-content'>
+                {toggleSidebar && <div className='mobile-side-content' id='mobile-side-content'>
 
 
+                    {/* <div className='mobile-menu-close' onClick={click_close_btn}>
+    <img src={svg.close} alt="" />
+</div> */}
                     <div className='mobile-menu-close' onClick={click_close_btn}>
                         <img src={svg.close} alt="" />
                     </div>
 
-                    <Sidenav />
+                    <Sidenav onClick={sideClick} />
 
                     <Link className='about-text' to={'/about'}>About</Link>
 
-                </div>
+                </div>}
 
             </div>
 

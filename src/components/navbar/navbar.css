@@ -101,7 +101,7 @@
 }
 
 .mobile-side-content {
-    display: none;
+    display: block;
     position: fixed;
     background-color: #fff;
     right: 0;
@@ -151,6 +151,10 @@
 }
 
 @media (max-width: 768px) {
+
+    .search-wrapper {
+        width: 200px;
+    }
 
     .input-group {
         width: 200px;
