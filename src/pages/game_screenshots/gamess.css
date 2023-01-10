@@ -89,3 +89,29 @@
     transform: translate(-50%, -50%);
 } */
 }
+
+@media (max-width: 800px) {
+    .game-ss-holder {
+        /* width: 100%;
+        display: flex;
+        justify-content: left;
+        flex-wrap: wrap; */
+        margin-top: 70px !important;
+        padding: 0px 10px;
+    }
+
+}
+
+@media (max-width: 750px) {
+    .game-ss-wrapper .content-wrapper {
+        width: 48% !important;
+    }
+
+}
+
+@media (max-width: 550px) {
+    .game-ss-wrapper .content-wrapper {
+        width: 100% !important;
+    }
+
+}
