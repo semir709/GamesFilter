@@ -14,13 +14,13 @@ const Platforms = ({ platforms }) => {
 
                     switch (platform.slug) {
                         case 'pc':
-                            return <div className="img-platform-wrapper mx-1">
-                                <img key={index} src={svg.windows} alt={platform.slug} />
+                            return <div className="img-platform-wrapper mx-1" key={index}>
+                                <img src={svg.windows} alt={platform.slug} />
                             </div>
                         case 'playstation4':
-                            return <div className="img-platform-wrapper  mx-1"><img key={index} src={svg.playstation} alt={platform.slug} /></div>
+                            return <div className="img-platform-wrapper  mx-1" key={index}><img src={svg.playstation} alt={platform.slug} /></div>
                         case 'xbox-series-x':
-                            return <div className="img-platform-wrapper  mx-1"><img key={index} src={svg.xbox} alt={platform.slug} /></div>
+                            return <div className="img-platform-wrapper  mx-1" key={index}><img src={svg.xbox} alt={platform.slug} /></div>
                         default:
                             return ''
 
