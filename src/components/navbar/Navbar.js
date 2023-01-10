@@ -78,7 +78,6 @@ const Navbar = () => {
     }
 
     const sideClick = () => {
-        console.log('Hey');
         const overlay = document.querySelector('#overlay');
         overlay.classList.remove('show-overlay');
         document.body.classList.remove('stop-scrolling');
@@ -93,11 +92,8 @@ const Navbar = () => {
         } else if (window.scrollY < oldScrollY && window.scrollY !== 0) {
             setShowNavBar(false);
         } else if (window.scrollY < oldScrollY && window.scrollY === 0) {
-            console.log('hey');
             setShowNavBar(true);
         }
-
-        console.log(window.scrollY)
 
         oldScrollY = window.scrollY;
     }

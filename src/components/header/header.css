@@ -1,7 +1,25 @@
-
-
 .header-holder h1 {
 
     font-size: 100px;
+
+}
+
+@media (max-width: 765px) {
+
+    .header-holder h1 {
+
+        font-size: 70px;
+
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .header-holder h1 {
+
+        font-size: 50px;
+
+    }
 
 }

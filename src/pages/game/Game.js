@@ -59,7 +59,7 @@ const Game = () => {
 
                 <div className="row justify-content-between">
 
-                    <div className=" col-6 info-game ">
+                    <div className=" col-xl-6 info-game ">
 
 
                         <div className="d-flex justify-content-between">
@@ -84,7 +84,7 @@ const Game = () => {
 
                         </div>
 
-                        <div className="platform-info">
+                        <div className="platform-info ">
 
                             <div className="platform-header">
                                 <p>Platform relased</p>
@@ -131,7 +131,7 @@ const Game = () => {
 
                     </div>
 
-                    <div className=" col-5 p-0 media-game">
+                    <div className=" col-xl-6 p-0  media-game">
 
                         {/* <div className="game-video">
                             <Image src={data.background_image_additional} />

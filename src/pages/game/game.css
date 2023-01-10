@@ -8,7 +8,7 @@
 .info-game {
     /* width: 45%; */
     /* background-color: red; */
-    height: 10vh;
+    /* height: 10vh; */
 }
 
 .info>* {
@@ -44,5 +44,25 @@
     width: 100%;
     text-align: center;
     margin: 20px 0px;
+
+}
+
+@media (max-width: 1200px) {
+    .media-game {
+        margin-top: 40px;
+    }
+
+}
+
+@media (max-width: 765px) {
+
+
+    .game-page-holder {
+
+        width: 100%;
+        margin: 20px !important;
+        padding: 70px 10px 0px 10px !important;
+    }
+
 
 }

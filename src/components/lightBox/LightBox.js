@@ -83,7 +83,6 @@ const LightBox = ({ media, more_id }) => {
                     </div>
                 }
             })}
-            {/* Add more */}
 
             <div className="content-wrapper">
                 <Link to={`screenshots`}>
