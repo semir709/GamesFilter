@@ -74,6 +74,13 @@ const Main = () => {
 
   console.log(data);
 
+  const breakpointColumnsObj = {
+    default: 4,
+    1200: 3,
+    758: 2,
+    500: 1
+  };
+
   return (
     <div className="main-holder mx-5">
       <Header text={"All games"} />
@@ -81,7 +88,7 @@ const Main = () => {
       <div className="d-flex">
         <DropFilter text={filter} setFilter={setFilter} />
       </div>
-      <Masonry breakpointCols={4} className="my-masonry-grid">
+      <Masonry breakpointCols={breakpointColumnsObj} className="my-masonry-grid">
         {data && data.map(({ name, released, background_image, rating, ratings, platforms, genres, id }, index) => {
           if (data.length === index + 1) {
             return <Card ref={lastCardElementRef} text={name} src={background_image} released={released} genres={genres} rating={rating} platforms={platforms} key={id} card_id={id} />;

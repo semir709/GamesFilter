@@ -1,5 +1,5 @@
 .card-item {
-    width: 280px;
+    width: 95%;
     /* height: 100px; */
     background-color: #424242;
     margin: 10px 15px;
@@ -52,3 +52,10 @@
 .excelent-rating {
     color: #1efd00 !important;
 } */
+
+@media (max-width: 800px) {
+    .card-item {
+        width: 95%;
+    }
+
+}

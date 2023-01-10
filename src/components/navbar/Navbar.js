@@ -16,6 +16,7 @@ const Navbar = () => {
     const [data, setData] = useState(null);
     const inputRef = useRef(null);
     const [toggleSidebar, setToggleSidebar] = useState(false);
+    const [showNavBar, setShowNavBar] = useState(true);
 
     const click_menu_btn = (e) => {
         // const menu_items = document.querySelector('#mobile-side-content');
@@ -84,9 +85,35 @@ const Navbar = () => {
         setToggleSidebar(false);
     }
 
+    let oldScrollY = 0;
+    const contorlNavbar = () => {
+
+        if (window.scrollY > oldScrollY) {
+            setShowNavBar(true);
+        } else if (window.scrollY < oldScrollY && window.scrollY !== 0) {
+            setShowNavBar(false);
+        } else if (window.scrollY < oldScrollY && window.scrollY === 0) {
+            console.log('hey');
+            setShowNavBar(true);
+        }
+
+        console.log(window.scrollY)
+
+        oldScrollY = window.scrollY;
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', contorlNavbar);
+
+        return () => {
+            window.removeEventListener('scroll', contorlNavbar);
+        }
+    }, []);
+
     return (
 
-        <header className="navbar-holder d-flex justify-content-between align-items-center mt-3 px-3">
+
+        <header className={`${showNavBar && 'navbar-holder-show '}  navbar-holder d-flex justify-content-between align-items-center mt-3 px-3`}>
 
             <Link to={'/'}>Logo</Link>
 
@@ -122,21 +149,12 @@ const Navbar = () => {
             <Link className='about-text' to={'/about'}>About</Link>
 
             <div className='mobile-side-content-holder'>
-
-                {/* <div className='mobile-menu-open' onClick={click_menu_btn}>
-                    <img src={svg.menu} alt="asd" />
-                </div> */}
-
                 <div className='mobile-menu-open' onClick={click_menu_btn}>
                     <img src={svg.menu} alt="asd" />
                 </div>
 
                 {toggleSidebar && <div className='mobile-side-content' id='mobile-side-content'>
 
-
-                    {/* <div className='mobile-menu-close' onClick={click_close_btn}>
-    <img src={svg.close} alt="" />
-</div> */}
                     <div className='mobile-menu-close' onClick={click_close_btn}>
                         <img src={svg.close} alt="" />
                     </div>
@@ -151,6 +169,9 @@ const Navbar = () => {
 
 
         </header>
+
+
+
 
     );
 }

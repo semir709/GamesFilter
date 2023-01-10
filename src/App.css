@@ -43,10 +43,11 @@ p {
     min-width: 140px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
     .sidenav-wrapper {
         min-width: 0px;
+        display: none;
     }
 
 
