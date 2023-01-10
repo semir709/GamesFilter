@@ -3,7 +3,7 @@ body {
     color: #fff;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,7 +20,7 @@ a:hover {
 }
 
 p {
-  margin: 0;  
+    margin: 0;
 }
 
 #overlay {
@@ -37,4 +37,17 @@ p {
 
 .show-overlay {
     display: block !important;
+}
+
+.sidenav-wrapper {
+    min-width: 140px;
+}
+
+@media (max-width: 768px) {
+
+    .sidenav-wrapper {
+        min-width: 0px;
+    }
+
+
 }
