@@ -1,6 +1,6 @@
-# Games list website clone
+# Video Games website clone
 
-Live Site URL: [Games list](https://gleaming-bonbon-7b0b1d.netlify.app/)
+Live Site URL: [Video Games website](https://gleaming-bonbon-7b0b1d.netlify.app/)
 
 ## Build with
 
