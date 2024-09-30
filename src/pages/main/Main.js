@@ -17,9 +17,8 @@ import {
   useInfiniteQuery,
   QueryClient,
   QueryClientProvider,
-} from "@tanstack/react-query"
+} from "@tanstack/react-query";
 import { Component } from "react";
-
 
 const queryClient = new QueryClient();
 
@@ -31,19 +30,19 @@ const Main = ({ text }) => {
   let { loading, error, data, hasMore } = useApiCall(category, page, filter);
 
   const observer = useRef();
-  const lastCardElementRef = useCallback((node) => {
-    if (loading) return;
-    if (observer.current) observer.current.disconnect();
-    observer.current = new IntersectionObserver(entries => {
-
-      if (entries[0].isIntersecting && hasMore) {
-        setPage((prev) => prev + 1);
-      }
-
-    });
-    if (node) observer.current.observe(node);
-  }, [loading, hasMore]);
-
+  const lastCardElementRef = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          setPage((prev) => prev + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, hasMore]
+  );
 
   // const fetchData = async ({ pageParam = 1 }) => {
   //   return axios.get(`https://api.rawg.io/api/games?key=${process.env.REACT_APP_KEY}&page=${pageParam}`);
@@ -72,14 +71,11 @@ const Main = ({ text }) => {
   //   loadMoreActive.current = true;
   // }
 
-
-  console.log(data);
-
   const breakpointColumnsObj = {
     default: 4,
     1200: 3,
     758: 2,
-    500: 1
+    500: 1,
   };
 
   return (
@@ -89,19 +85,58 @@ const Main = ({ text }) => {
       <div className="d-flex">
         <DropFilter text={filter} setFilter={setFilter} />
       </div>
-      <Masonry breakpointCols={breakpointColumnsObj} className="my-masonry-grid">
-        {data && data.map(({ name, released, background_image, rating, ratings, platforms, genres, id }, index) => {
-          if (data.length === index + 1) {
-            return <Card ref={lastCardElementRef} text={name} src={background_image} released={released} genres={genres} rating={rating} platforms={platforms} key={id} card_id={id} />;
-          } else {
-            return <Card text={name} src={background_image} released={released} genres={genres} rating={rating} platforms={platforms} key={id} card_id={id} />;
-          }
-
-        })}
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+      >
+        {data &&
+          data.map(
+            (
+              {
+                name,
+                released,
+                background_image,
+                rating,
+                ratings,
+                platforms,
+                genres,
+                id,
+              },
+              index
+            ) => {
+              if (data.length === index + 1) {
+                return (
+                  <Card
+                    ref={lastCardElementRef}
+                    text={name}
+                    src={background_image}
+                    released={released}
+                    genres={genres}
+                    rating={rating}
+                    platforms={platforms}
+                    key={id}
+                    card_id={id}
+                  />
+                );
+              } else {
+                return (
+                  <Card
+                    text={name}
+                    src={background_image}
+                    released={released}
+                    genres={genres}
+                    rating={rating}
+                    platforms={platforms}
+                    key={id}
+                    card_id={id}
+                  />
+                );
+              }
+            }
+          )}
       </Masonry>
 
       {loading && <Loading fontSize={40} />}
-      {error && 'error'}
 
       {/* <Masonry breakpointCols={4} className="my-masonry-grid">
 
@@ -115,7 +150,6 @@ const Main = ({ text }) => {
           })
         ))}
       </Masonry> */}
-
 
       {/* {loadMoreActive.current === false && <div>
         <button
@@ -153,7 +187,6 @@ const Main = ({ text }) => {
         </Masonry>
 
       </InfiniteScroll> */}
-
     </div>
   );
 };

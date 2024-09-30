@@ -1,33 +1,40 @@
 .game-page-holder {
+  width: 90%;
+  padding-top: 70px;
+  font-size: 20px;
+}
 
-    width: 90%;
-    padding-top: 70px;
-    font-size: 20px;
+.setCenter {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 200px;
+  align-items: center;
 }
 
 .info-game {
-    /* width: 45%; */
-    /* background-color: red; */
-    /* height: 10vh; */
+  /* width: 45%; */
+  /* background-color: red; */
+  /* height: 10vh; */
 }
 
-.info>* {
-    margin-bottom: 20px;
+.info > * {
+  margin-bottom: 20px;
 }
 
 .platform-header {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .platform-header p {
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .platform-header .line {
-    width: 100%;
-    height: 1px;
-    background-color: #fff;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
 }
 
 /* .game-images {
@@ -36,33 +43,25 @@
 } */
 
 .image-items {
-    width: 49%;
+  width: 49%;
 }
 
-
 .text-more-holder {
-    width: 100%;
-    text-align: center;
-    margin: 20px 0px;
-
+  width: 100%;
+  text-align: center;
+  margin: 20px 0px;
 }
 
 @media (max-width: 1200px) {
-    .media-game {
-        margin-top: 40px;
-    }
-
+  .media-game {
+    margin-top: 40px;
+  }
 }
 
 @media (max-width: 765px) {
-
-
-    .game-page-holder {
-
-        width: 100%;
-        margin: 20px !important;
-        padding: 70px 10px 0px 10px !important;
-    }
-
-
+  .game-page-holder {
+    width: 100%;
+    margin: 20px !important;
+    padding: 70px 10px 0px 10px !important;
+  }
 }
