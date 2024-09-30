@@ -1,24 +1,24 @@
 .side-nav-holder {
-    min-width: 180px;
-    padding-top: 70px;
-    position: fixed;
-    height: 600px;
+  min-width: 180px;
+  padding-top: 30px;
+  position: fixed;
+  height: 600px;
 }
 
 .side-nav-holder ul {
-    padding: 0;
+  padding: 0;
 }
 
 .side-nav-holder ul li {
-    list-style: none;
-    width: fit-content;
-    height: fit-content;
+  list-style: none;
+  width: fit-content;
+  height: fit-content;
 }
 
 .side-nav-holder ul li:first-child p {
-    font-size: 25px;
-    font-weight: bold;
-    margin-bottom: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 /* .side-nav-holder ul li:hover {
@@ -28,9 +28,7 @@
 } */
 
 @media (max-width: 800px) {
-
-    .side-nav-holder {
-        display: none;
-    }
-
+  .side-nav-holder {
+    display: none;
+  }
 }

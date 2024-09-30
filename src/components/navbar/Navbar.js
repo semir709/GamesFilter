@@ -164,9 +164,9 @@ const Navbar = ({ setNewSelected }) => {
 
             <Sidenav onClick={sideClick} />
 
-            <Link className="about-text" to={"/about"}>
+            {/* <Link className="about-text" to={"/about"}>
               About
-            </Link>
+            </Link> */}
           </div>
         )}
       </div>

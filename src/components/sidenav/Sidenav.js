@@ -11,30 +11,22 @@ const Sidenav = ({ setNewSelected }) => {
 
   const onClick = (e) => {
     setNewSelected(e.target.innerHTML);
-  }
+  };
 
   return (
     <div className="side-nav-holder ps-3">
-      < ul className="mt-5" >
+      <ul>
         <li>
           <p>Genres</p>
         </li>
         <li>
-          <Link to={'action'} onClick={onClick}>
-            <Navitem
-              text={"Action"}
-              val={"action"}
-              hasImg={false}
-            />
+          <Link to={"action"} onClick={onClick}>
+            <Navitem text={"Action"} val={"action"} hasImg={false} />
           </Link>
         </li>
         <li>
-          <Link to={'strategy'} onClick={onClick}>
-            <Navitem
-              text={"Strategy"}
-              val={"strategy"}
-              hasImg={false}
-            />
+          <Link to={"strategy"} onClick={onClick}>
+            <Navitem text={"Strategy"} val={"strategy"} hasImg={false} />
           </Link>
         </li>
         <li>
@@ -48,52 +40,36 @@ const Sidenav = ({ setNewSelected }) => {
         </li>
         <li>
           <Link to={"shooter"} onClick={onClick}>
-            <Navitem
-              text={"Shooter"}
-              val={"shooter"}
-              hasImg={false}
-            />
+            <Navitem text={"Shooter"} val={"shooter"} hasImg={false} />
           </Link>
         </li>
         <li>
           <Link to={"adventure"} onClick={onClick}>
-            <Navitem
-              text={"Adventure"}
-              val={"adventure"}
-              hasImg={false}
-            />
+            <Navitem text={"Adventure"} val={"adventure"} hasImg={false} />
           </Link>
         </li>
         <li>
           <Link to={"puzzle"} onClick={onClick}>
-            <Navitem
-              text={"Puzzle"}
-              val={"puzzle"}
-              hasImg={false}
-            />
+            <Navitem text={"Puzzle"} val={"puzzle"} hasImg={false} />
           </Link>
         </li>
         <li>
           <Link to={"racing"} onClick={onClick}>
-            <Navitem
-              text={"Racing"}
-              val={"racing"}
-              hasImg={false}
-            />
+            <Navitem text={"Racing"} val={"racing"} hasImg={false} />
           </Link>
         </li>
         <li>
           <Link to={"sports"} onClick={onClick}>
-            <Navitem
-              text={"Sport"}
-              val={"sports"}
-              hasImg={false}
-            />
-
+            <Navitem text={"Sport"} val={"sports"} hasImg={false} />
           </Link>
         </li>
-      </ ul>
-    </div >
+        <li>
+          <Link className="about-text" to={"/about"} onClick={onClick}>
+            About
+          </Link>
+        </li>
+      </ul>
+    </div>
   );
 };
 
