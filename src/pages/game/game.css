@@ -4,14 +4,6 @@
   font-size: 20px;
 }
 
-.setCenter {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  height: 200px;
-  align-items: center;
-}
-
 .info-game {
   /* width: 45%; */
   /* background-color: red; */
