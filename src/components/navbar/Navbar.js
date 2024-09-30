@@ -118,7 +118,10 @@ const Navbar = ({ setNewSelected }) => {
       </Link>
 
       <div className="search-wrapper">
-        <div className="input-group d-flex align-items-center ">
+        <label
+          htmlFor="search-input"
+          className="input-group d-flex align-items-center "
+        >
           <label htmlFor="search-input" className="label-search">
             <img src={svg.search} alt="search" />
           </label>
@@ -129,8 +132,9 @@ const Navbar = ({ setNewSelected }) => {
             onChange={handleSearch}
             type="text"
             placeholder="Search..."
+            className="inputSearch"
           />
-        </div>
+        </label>
 
         <div className="search-res-wrapper">
           {searchMenu &&
@@ -163,10 +167,6 @@ const Navbar = ({ setNewSelected }) => {
             </div>
 
             <Sidenav onClick={sideClick} />
-
-            {/* <Link className="about-text" to={"/about"}>
-              About
-            </Link> */}
           </div>
         )}
       </div>

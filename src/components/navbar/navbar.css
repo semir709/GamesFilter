@@ -161,6 +161,10 @@
   overflow: hidden;
 }
 
+.inputSearch {
+  width: 90%;
+}
+
 @media (max-width: 800px) {
   .navbar-holder {
     position: fixed;
